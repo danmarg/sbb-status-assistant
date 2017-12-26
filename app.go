@@ -124,7 +124,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 		d := departure{
 			Name:   prettyName(c),
-			OnTime: c.Stop.Prognosis.Departure != "",
+			OnTime: c.Stop.Prognosis.Departure == "",
 			To:     c.To,
 			Mode:   mode(c),
 		}
