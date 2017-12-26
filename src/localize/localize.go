@@ -30,7 +30,7 @@ type Departure struct {
 	Mode      string
 }
 
-func (l *Localizer) NextDepartures(from string, deps []Departure) string {
+func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {
 	parts := []string{}
 	for _, d := range deps {
 		// "the 7 tram departing on-time at 15:04 to Farbhof"
@@ -88,10 +88,20 @@ func (l *Localizer) NextDepartures(from string, deps []Departure) string {
 		}
 	}
 	var result string
-	if l.Lang == language.German {
-		result = fmt.Sprintf("Die nächsten %d Abfahrten von %s sind: ", len(parts), from)
+	if startTime.IsZero() {
+		if l.Lang == language.German {
+			result = fmt.Sprintf("Die nächsten %d Abfahrten von %s sind: ", len(parts), from)
+		} else {
+			result = fmt.Sprintf("The next %d departures from %s are: ", len(parts), from)
+		}
 	} else {
-		result = fmt.Sprintf("The next %d departures from %s are: ", len(parts), from)
+		st := startTime.Format("15:04")
+		if l.Lang == language.German {
+			result = fmt.Sprintf("Die nächsten %d Abfahrten ab %s von %s sind: ", len(parts), st, from)
+		} else {
+			result = fmt.Sprintf("The next %d departures leaving %s from %s are: ", len(parts), from, st)
+		}
+
 	}
 
 	result += strings.Join(parts[:len(parts)-1], "; ")

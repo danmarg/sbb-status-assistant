@@ -73,8 +73,9 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), x, nil) },
 	}
 	sreq := transport.StationboardRequest{
-		Station: dreq.Result.Parameters.ZvvStops,
-		Type:    transport.DEPARTURE, // XXX: Hardcoded for now
+		Station:  dreq.Result.Parameters.ZvvStops,
+		Type:     transport.DEPARTURE, // XXX: Hardcoded for now
+		Datetime: dreq.Result.Parameters.Time,
 	}
 	sresp, err := svc.Stationboard(sreq)
 	if err != nil {
@@ -142,5 +143,5 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, departures)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, dreq.Result.Parameters.Time, departures)
 }
