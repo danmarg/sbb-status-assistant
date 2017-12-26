@@ -72,10 +72,28 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		Client: urlfetch.Client(appengine.NewContext(req)),
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), x, nil) },
 	}
+	var startTime time.Time
+	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
+	if dreq.Result.Parameters.DateTime != "" {
+		if startTime, err = time.Parse("15:04:05", dreq.Result.Parameters.DateTime); err != nil {
+			if startTime, err = time.Parse("2006-01-02T15:04:05Z", dreq.Result.Parameters.DateTime); err != nil {
+				startTime = time.Now()
+			}
+		} else {
+			// Successfully parsed as HH:MM:SS, so we assume it's today.
+			// XXX: This will be dumb around midnight, I guess. Remember to email the Dialogflow folks about how this is silly.
+			now := time.Now()
+			startTime = time.Date(now.Year(), now.Month(), now.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), 0, now.Location())
+		}
+	} else {
+		startTime = time.Time{}
+	}
+	// XXX: Debug
+	log.Infof(appengine.NewContext(req), fmt.Sprintf("RAW TIME: %s PARSED TIME: %v", dreq.Result.Parameters.DateTime, startTime), nil)
 	sreq := transport.StationboardRequest{
 		Station:  dreq.Result.Parameters.ZvvStops,
 		Type:     transport.DEPARTURE, // XXX: Hardcoded for now
-		Datetime: dreq.Result.Parameters.Time,
+		Datetime: startTime,
 	}
 	sresp, err := svc.Stationboard(sreq)
 	if err != nil {
@@ -143,5 +161,5 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, dreq.Result.Parameters.Time, departures)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, startTime, departures)
 }

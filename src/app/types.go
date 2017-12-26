@@ -19,7 +19,7 @@ type DialogflowRequest struct {
 			Transport []string    `json:"transport"`
 			ZvvRoutes []string    `json:"zvv_routes"`
 			Cardinal  json.Number `json:"cardinal"`
-			Time      time.Time   `json:"time"`
+			DateTime  string      `json:"date-time"`
 		} `json:"parameters"`
 		Contexts []interface{} `json:"contexts"`
 		Metadata struct {
