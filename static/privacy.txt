@@ -1,0 +1,14 @@
+PRIVACY POLICY
+
+We collect anonymous usage data from queries issued to the API and Assistant
+integration, including but not limited to:
+
+* Query text
+* Query parameters (stop, route, etc)
+* Metadata (query time, etc)
+
+The data are used only to debug and improve the service.
+
+In addition, requests to the service are handled by
+https://transport.opendata.ch, who probably have their own privacy policy
+somewhere.

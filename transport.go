@@ -12,6 +12,7 @@ const stationboardEndpoint = "http://transport.opendata.ch/v1/stationboard"
 
 type Transport struct {
 	Client *http.Client
+	Logger func(string)
 }
 
 func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse, error) {
@@ -44,7 +45,9 @@ func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse,
 	}
 
 	u := stationboardEndpoint + "?" + strings.Join(strParams, "&")
-
+	if t.Logger != nil {
+		t.Logger("OpenTransport URL: " + u)
+	}
 	rq, err := http.NewRequest("GET", u, nil)
 	if err != nil {
 		return StationboardResponse{}, err

@@ -88,10 +88,10 @@ type DialogflowRequest struct {
 		Action           string `json:"action"`
 		ActionIncomplete bool   `json:"actionIncomplete"`
 		Parameters       struct {
-			ZvvStops  string        `json:"zvv_stops"`
-			Transport []string      `json:"transport"`
-			ZvvRoutes []interface{} `json:"zvv_routes"`
-			Cardinal  json.Number   `json:"cardinal"`
+			ZvvStops  string      `json:"zvv_stops"`
+			Transport []string    `json:"transport"`
+			ZvvRoutes []string    `json:"zvv_routes"`
+			Cardinal  json.Number `json:"cardinal"`
 		} `json:"parameters"`
 		Contexts []interface{} `json:"contexts"`
 		Metadata struct {

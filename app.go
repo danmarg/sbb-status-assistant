@@ -9,11 +9,27 @@ import (
 	"time"
 
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
 )
 
 func init() {
 	http.HandleFunc("/dialogflow", dialogflow)
+}
+
+func catToMode(c string) string {
+	switch c {
+	case "BUS":
+		return "bus"
+	case "T":
+		return "tram"
+	case "IC":
+	case "IR":
+	case "S":
+		return "train"
+	}
+	// XXX: ????
+	return c
 }
 
 func dialogflow(writer http.ResponseWriter, req *http.Request) {
@@ -31,27 +47,12 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	// Then dispatch to Opendata
 	svc := Transport{
 		Client: urlfetch.Client(appengine.NewContext(req)),
+		Logger: func(x string) { log.Infof(appengine.NewContext(req), x, nil) },
 	}
 	sreq := StationboardRequest{
 		Station: dreq.Result.Parameters.ZvvStops,
 		Type:    DEPARTURE, // XXX: Hardcoded for now
 	}
-	tps := make([]int, len(dreq.Result.Parameters.Transport))
-	for i, tp := range dreq.Result.Parameters.Transport {
-		switch tp {
-		case "tram":
-			tps[i] = TRAM
-		case "bus":
-			tps[i] = BUS
-		case "train":
-			tps[i] = TRAIN
-		case "boat":
-			tps[i] = BOAT
-		case "any":
-			tps[i] = ANY
-		}
-	}
-	sreq.Transportations = tps
 	sresp, err := svc.Stationboard(sreq)
 	if err != nil {
 		http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
@@ -70,19 +71,19 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 			return
 		}
 	}()
-
-	if len(sresp.Stationboard) == 0 {
-		dresp.Speech = "I could not find any matching stations or routes."
-		return
-	}
 	limit := 5 // Default
 	if i, err := dreq.Result.Parameters.Cardinal.Int64(); err == nil {
 		limit = int(i)
 	}
 
+	modes := map[string]bool{}
+	for _, tp := range dreq.Result.Parameters.Transport {
+		modes[tp] = true
+	}
 	parts := []string{}
 	for _, c := range sresp.Stationboard {
-		n := strings.Split(c.Name, " ")[0] // First part before the space is meaningful.
+		ns := strings.Split(c.Name, " ")
+		n := ns[0] // XXX: Figure out how to get tram numbers!
 		// If the user specified specific routes, skip on that basis.
 		if len(dreq.Result.Parameters.ZvvRoutes) > 0 {
 			ok := false
@@ -92,6 +93,12 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 				}
 			}
 			if !ok {
+				continue
+			}
+		}
+		// Or if the user specified modes.
+		if len(modes) > 0 {
+			if !modes[catToMode(c.Category)] {
 				continue
 			}
 		}
@@ -107,6 +114,11 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 			break
 		}
 	}
+	if len(parts) == 0 {
+		dresp.Speech = "I could not find any matching stations or routes."
+		return
+	}
+
 	dresp.Speech = fmt.Sprintf("The next %d departures from %s are: ", len(parts), dreq.Result.Parameters.ZvvStops)
 	dresp.Speech += strings.Join(parts[:len(parts)-1], "; ") + " and " + parts[len(parts)-1] + "."
 }
