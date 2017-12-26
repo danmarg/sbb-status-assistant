@@ -17,8 +17,8 @@ func init() {
 	http.HandleFunc("/dialogflow", dialogflow)
 }
 
-func catToMode(c string) string {
-	switch c {
+func mode(s StationboardStation) string {
+	switch s.Category {
 	case "BUS":
 		return "bus"
 	case "T":
@@ -29,7 +29,18 @@ func catToMode(c string) string {
 		return "train"
 	}
 	// XXX: ????
-	return c
+	return s.Category
+}
+
+func name(s StationboardStation) string {
+	switch s.Category {
+	case "T":
+		return fmt.Sprintf("%s tram", s.Number)
+	case "BUS":
+		return fmt.Sprintf("%s bus", s.Number)
+	default:
+		return fmt.Sprintf("%s%s", s.Category, s.Number)
+	}
 }
 
 func dialogflow(writer http.ResponseWriter, req *http.Request) {
@@ -76,14 +87,13 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		limit = int(i)
 	}
 
-	modes := map[string]bool{}
+	allowedModes := map[string]bool{}
 	for _, tp := range dreq.Result.Parameters.Transport {
-		modes[tp] = true
+		allowedModes[tp] = true
 	}
-	parts := []string{}
+	results := []string{}
 	for _, c := range sresp.Stationboard {
-		ns := strings.Split(c.Name, " ")
-		n := ns[0] // XXX: Figure out how to get tram numbers!
+		n := name(c)
 		// If the user specified specific routes, skip on that basis.
 		if len(dreq.Result.Parameters.ZvvRoutes) > 0 {
 			ok := false
@@ -97,28 +107,28 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 			}
 		}
 		// Or if the user specified modes.
-		if len(modes) > 0 {
-			if !modes[catToMode(c.Category)] {
+		if len(allowedModes) > 0 {
+			if !allowedModes[mode(c)] {
 				continue
 			}
 		}
 		var d string
 		if dr, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
 			d = dr.Format("15:04")
-			parts = append(parts, fmt.Sprintf("the %s to %s, running late at %s", n, c.To, d))
+			results = append(results, fmt.Sprintf("the %s to %s, running late at %s", n, c.To, d))
 		} else {
 			d = time.Unix(int64(c.Stop.DepartureTimestamp), 0).Format("15:04")
-			parts = append(parts, fmt.Sprintf("the %s to %s, leaving on-time at %s", n, c.To, d))
+			results = append(results, fmt.Sprintf("the %s to %s, leaving on-time at %s", n, c.To, d))
 		}
-		if len(parts) == limit {
+		if len(results) == limit {
 			break
 		}
 	}
-	if len(parts) == 0 {
+	if len(results) == 0 {
 		dresp.Speech = "I could not find any matching stations or routes."
 		return
 	}
 
-	dresp.Speech = fmt.Sprintf("The next %d departures from %s are: ", len(parts), dreq.Result.Parameters.ZvvStops)
-	dresp.Speech += strings.Join(parts[:len(parts)-1], "; ") + " and " + parts[len(parts)-1] + "."
+	dresp.Speech = fmt.Sprintf("The next %d departures from %s are: ", len(results), dreq.Result.Parameters.ZvvStops)
+	dresp.Speech += strings.Join(results[:len(results)-1], "; ") + " and " + results[len(results)-1] + "."
 }
