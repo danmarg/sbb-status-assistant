@@ -19,6 +19,23 @@ func init() {
 	http.HandleFunc("/dialogflow", dialogflow)
 }
 
+// Returns zero time if failure.
+func tryParseStupidDate(raw string) time.Time {
+	var result time.Time
+	var err error
+	if result, err = time.Parse("15:04:05", raw); err != nil {
+		if result, err = time.Parse("2006-01-02T15:04:05Z", raw); err != nil {
+			result = time.Time{}
+		}
+	} else {
+		// Successfully parsed as HH:MM:SS, so we assume it's today.
+		// XXX: This will be dumb around midnight, I guess. Remember to email the Dialogflow folks about how this is silly.
+		now := time.Now()
+		result = time.Date(now.Year(), now.Month(), now.Day(), result.Hour(), result.Minute(), result.Second(), 0, now.Location())
+	}
+	return result
+}
+
 func mode(s transport.StationboardStation) string {
 	switch s.Category {
 	case "BUS":
@@ -74,22 +91,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
-	if dreq.Result.Parameters.DateTime != "" {
-		if startTime, err = time.Parse("15:04:05", dreq.Result.Parameters.DateTime); err != nil {
-			if startTime, err = time.Parse("2006-01-02T15:04:05Z", dreq.Result.Parameters.DateTime); err != nil {
-				startTime = time.Now()
-			}
-		} else {
-			// Successfully parsed as HH:MM:SS, so we assume it's today.
-			// XXX: This will be dumb around midnight, I guess. Remember to email the Dialogflow folks about how this is silly.
-			now := time.Now()
-			startTime = time.Date(now.Year(), now.Month(), now.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), 0, now.Location())
-		}
-	} else {
-		startTime = time.Time{}
-	}
-	// XXX: Debug
-	log.Infof(appengine.NewContext(req), fmt.Sprintf("RAW TIME: %s PARSED TIME: %v", dreq.Result.Parameters.DateTime, startTime), nil)
+	startTime = tryParseStupidDate(dreq.Result.Parameters.DateTime)
 	sreq := transport.StationboardRequest{
 		Station:  dreq.Result.Parameters.ZvvStops,
 		Type:     transport.DEPARTURE, // XXX: Hardcoded for now
