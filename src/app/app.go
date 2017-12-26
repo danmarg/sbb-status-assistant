@@ -1,4 +1,4 @@
-package transport
+package app
 
 import (
 	"encoding/json"
@@ -10,13 +10,16 @@ import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
+
+	"localize"
+	"transport"
 )
 
 func init() {
 	http.HandleFunc("/dialogflow", dialogflow)
 }
 
-func mode(s StationboardStation) string {
+func mode(s transport.StationboardStation) string {
 	switch s.Category {
 	case "BUS":
 		return "bus"
@@ -31,7 +34,7 @@ func mode(s StationboardStation) string {
 	return s.Category
 }
 
-func prettyName(s StationboardStation) string {
+func prettyName(s transport.StationboardStation) string {
 	switch s.Category {
 	case "BUS":
 		return s.Number
@@ -41,7 +44,7 @@ func prettyName(s StationboardStation) string {
 	return fmt.Sprintf("%s%s", s.Category, s.Number)
 }
 
-func userGivenName(s StationboardStation) string {
+func userGivenName(s transport.StationboardStation) string {
 	switch s.Category {
 	case "T":
 		return fmt.Sprintf("%s", s.Number)
@@ -65,20 +68,20 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		return
 	}
 	// Then dispatch to Opendata
-	svc := Transport{
+	svc := transport.Transport{
 		Client: urlfetch.Client(appengine.NewContext(req)),
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), x, nil) },
 	}
-	sreq := StationboardRequest{
+	sreq := transport.StationboardRequest{
 		Station: dreq.Result.Parameters.ZvvStops,
-		Type:    DEPARTURE, // XXX: Hardcoded for now
+		Type:    transport.DEPARTURE, // XXX: Hardcoded for now
 	}
 	sresp, err := svc.Stationboard(sreq)
 	if err != nil {
 		http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
 		return
 	}
-	loc := newLocalizer(dreq.Lang)
+	loc := localize.NewLocalizer(dreq.Lang)
 	// Then create response
 	dresp := DialogflowResponse{}
 	defer func() {
@@ -101,7 +104,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	for _, tp := range dreq.Result.Parameters.Transport {
 		allowedModes[tp] = true
 	}
-	departures := []departure{}
+	departures := []localize.Departure{}
 	for _, c := range sresp.Stationboard {
 		// If the user specified specific routes, skip on that basis.
 		if len(dreq.Result.Parameters.ZvvRoutes) > 0 {
@@ -122,7 +125,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 				continue
 			}
 		}
-		d := departure{
+		d := localize.Departure{
 			Name:   prettyName(c),
 			OnTime: c.Stop.Prognosis.Departure == "",
 			To:     c.To,
@@ -139,5 +142,5 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	dresp.Speech = loc.nextDepartures(dreq.Result.Parameters.ZvvStops, departures)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, departures)
 }

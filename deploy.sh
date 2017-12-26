@@ -1,5 +1,8 @@
 #!/bin/bash
 export GOROOT=/usr/lib/google-golang
-export GOPATH=/home/dan/.go/
+export GOPATH=$PWD
+pushd .
+cd src/app
 gcloud --project sbb-status-4f4eb app deploy --quiet
+popd
 

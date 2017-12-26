@@ -1,4 +1,4 @@
-package transport
+package localize
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-type localizer struct {
+type Localizer struct {
 	Lang language.Tag
 }
 
@@ -17,12 +17,12 @@ var matcher = language.NewMatcher([]language.Tag{
 	language.German,
 })
 
-func newLocalizer(lang string) localizer {
+func NewLocalizer(lang string) Localizer {
 	tag, _ := language.MatchStrings(matcher, lang)
-	return localizer{tag}
+	return Localizer{tag}
 }
 
-type departure struct {
+type Departure struct {
 	Name      string
 	OnTime    bool
 	To        string
@@ -30,7 +30,7 @@ type departure struct {
 	Mode      string
 }
 
-func (l *localizer) nextDepartures(from string, deps []departure) string {
+func (l *Localizer) NextDepartures(from string, deps []Departure) string {
 	parts := []string{}
 	for _, d := range deps {
 		// "the 7 tram departing on-time at 15:04 to Farbhof"
