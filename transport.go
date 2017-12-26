@@ -11,7 +11,7 @@ import (
 const stationboardEndpoint = "http://transport.opendata.ch/v1/stationboard"
 
 type Transport struct {
-	Client http.Client
+	Client *http.Client
 }
 
 func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse, error) {
@@ -63,6 +63,6 @@ func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse,
 	}
 
 	// Post-filter by routes, since this isn't supported by the Opendata.ch API.
-	// XXX: This doesn't work because opendata doesn't give us route names we understand.
+	// XXX: I think we can filter by the Number field...?
 	return resp, nil
 }
