@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strings"
 	"time"
 
 	"google.golang.org/appengine"
@@ -32,12 +31,22 @@ func mode(s StationboardStation) string {
 	return s.Category
 }
 
-func name(s StationboardStation) string {
+func prettyName(s StationboardStation) string {
+	switch s.Category {
+	case "BUS":
+		return s.Number
+	case "T":
+		return s.Number
+	}
+	return fmt.Sprintf("%s%s", s.Category, s.Number)
+}
+
+func userGivenName(s StationboardStation) string {
 	switch s.Category {
 	case "T":
-		return fmt.Sprintf("%s tram", s.Number)
+		return fmt.Sprintf("%s", s.Number)
 	case "BUS":
-		return fmt.Sprintf("%s bus", s.Number)
+		return fmt.Sprintf("%s", s.Number)
 	default:
 		return fmt.Sprintf("%s%s", s.Category, s.Number)
 	}
@@ -69,6 +78,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
 		return
 	}
+	loc := newLocalizer(dreq.Lang)
 	// Then create response
 	dresp := DialogflowResponse{}
 	defer func() {
@@ -91,12 +101,12 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	for _, tp := range dreq.Result.Parameters.Transport {
 		allowedModes[tp] = true
 	}
-	results := []string{}
+	departures := []departure{}
 	for _, c := range sresp.Stationboard {
-		n := name(c)
 		// If the user specified specific routes, skip on that basis.
 		if len(dreq.Result.Parameters.ZvvRoutes) > 0 {
 			ok := false
+			n := userGivenName(c)
 			for _, r := range dreq.Result.Parameters.ZvvRoutes {
 				if n == r {
 					ok = true
@@ -112,23 +122,22 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 				continue
 			}
 		}
-		var d string
-		if dr, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
-			d = dr.Format("15:04")
-			results = append(results, fmt.Sprintf("the %s to %s, running late at %s", n, c.To, d))
-		} else {
-			d = time.Unix(int64(c.Stop.DepartureTimestamp), 0).Format("15:04")
-			results = append(results, fmt.Sprintf("the %s to %s, leaving on-time at %s", n, c.To, d))
+		d := departure{
+			Name:   prettyName(c),
+			OnTime: c.Stop.Prognosis.Departure != "",
+			To:     c.To,
+			Mode:   mode(c),
 		}
-		if len(results) == limit {
+		if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
+			d.Departing = dp
+		} else {
+			d.Departing = time.Unix(int64(c.Stop.DepartureTimestamp), 0)
+		}
+		departures = append(departures, d)
+		if len(departures) == limit {
 			break
 		}
 	}
-	if len(results) == 0 {
-		dresp.Speech = "I could not find any matching stations or routes."
-		return
-	}
 
-	dresp.Speech = fmt.Sprintf("The next %d departures from %s are: ", len(results), dreq.Result.Parameters.ZvvStops)
-	dresp.Speech += strings.Join(results[:len(results)-1], "; ") + " and " + results[len(results)-1] + "."
+	dresp.Speech = loc.nextDepartures(dreq.Result.Parameters.ZvvStops, departures)
 }
