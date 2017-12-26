@@ -95,7 +95,10 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 			result = fmt.Sprintf("The next %d departures from %s are: ", len(parts), from)
 		}
 	} else {
-		st := startTime.Format("15:04")
+		tz, _ := time.LoadLocation("Europe/Zurich")
+		// XXX: I have no idea wtf is going on here, but the time is off by 1 hour.
+		// XXX: XXX This is so fucking bad.
+		st := startTime.In(tz).Add(-time.Hour).Format("15:04")
 		if l.Lang == language.German {
 			result = fmt.Sprintf("Die nächsten %d Abfahrten ab %s von %s sind: ", len(parts), st, from)
 		} else {

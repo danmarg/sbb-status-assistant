@@ -33,6 +33,10 @@ func tryParseStupidDate(raw string) time.Time {
 		now := time.Now()
 		result = time.Date(now.Year(), now.Month(), now.Day(), result.Hour(), result.Minute(), result.Second(), 0, now.Location())
 	}
+	if !result.IsZero() { // Make sure it's Swiss time or something.
+		l, _ := time.LoadLocation("Europe/Zurich")
+		result = result.In(l)
+	}
 	return result
 }
 
@@ -87,7 +91,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	// Then dispatch to Opendata
 	svc := transport.Transport{
 		Client: urlfetch.Client(appengine.NewContext(req)),
-		Logger: func(x string) { log.Infof(appengine.NewContext(req), x, nil) },
+		Logger: func(x string) { log.Infof(appengine.NewContext(req), x) },
 	}
 	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
