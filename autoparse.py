@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Parses data from https://data.sbb.ch/explore/ into proper Dialogflow
+# entities.
 import argparse
 import copy
 import collections
@@ -60,5 +62,6 @@ print('Merged into',len(processed),'items')
 with open(args.output, 'w') as f:
     w = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
     for entity, values in processed.items():
-        w.writerow([entity] + list(values))
+        w.writerow([entity] + list([x for x in values
+                                    if not '(' in x and not ')' in x]))
 
