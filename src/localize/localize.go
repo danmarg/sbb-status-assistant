@@ -30,6 +30,7 @@ type Departure struct {
 	To        string
 	Departing time.Time
 	Mode      string
+	Platform  string
 }
 
 func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {
@@ -59,20 +60,29 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 		} else {
 			part += "the "
 		}
-		part += fmt.Sprintf("%s %s", d.Name, mode)
+		part += fmt.Sprintf("%s %s ", d.Name, mode)
 		tm := d.Departing.In(l.tz).Format("15:04")
 		if l.lang == language.German {
 			if d.OnTime {
-				part += fmt.Sprintf(" pünktlich abfahren nach %s um %s", d.To, tm)
+				part += "pünktlich abfahren "
 			} else {
-				part += fmt.Sprintf(" abfahren nach %s mit einer Verspätung um %s", d.To, tm)
+				part += "abfahren mit einer Verspätung "
 			}
+			if d.Platform != "" {
+				part += fmt.Sprintf("von Gleis %s ", d.Platform)
+			}
+			part += fmt.Sprintf("nach %s um %s", d.To, tm)
 		} else {
 			if d.OnTime {
-				part += fmt.Sprintf(" departing on-time to %s at %s", d.To, tm)
+				part += "departing on-time "
 			} else {
-				part += fmt.Sprintf(" departing behind schedule to %s at %s", d.To, tm)
+				part += "departing behind schedule "
 			}
+			if d.Platform != "" {
+				part += fmt.Sprintf("from platform %s ", d.Platform)
+			}
+
+			part += fmt.Sprintf("to %s at %s", d.To, tm)
 		}
 		parts = append(parts, part)
 	}

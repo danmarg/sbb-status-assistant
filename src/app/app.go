@@ -113,10 +113,14 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 				continue
 			}
 			d := localize.Departure{
-				Name:   prettyName(c.Sections[0].Journey.Category, c.Sections[0].Journey.Number),
-				OnTime: c.From.Delay > 0,
-				To:     c.To.Station.Name,
-				Mode:   mode(c.Sections[0].Journey.Category),
+				Name:     prettyName(c.Sections[0].Journey.Category, c.Sections[0].Journey.Number),
+				To:       c.To.Station.Name,
+				OnTime:   true,
+				Mode:     mode(c.Sections[0].Journey.Category),
+				Platform: c.From.Platform,
+			}
+			if x, _ := c.From.Delay.Int64(); c.From.Delay.String() != "" && x > 0 {
+				d.OnTime = false
 			}
 			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.From.Prognosis.Departure); c.From.Prognosis.Departure != "" && err != nil {
 				d.Departing = dp
@@ -140,10 +144,11 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 		for _, c := range sresp.Stationboard {
 			d := localize.Departure{
-				Name:   prettyName(c.Category, c.Number),
-				OnTime: c.Stop.Prognosis.Departure == "",
-				To:     c.To,
-				Mode:   mode(c.Category),
+				Name:     prettyName(c.Category, c.Number),
+				OnTime:   c.Stop.Prognosis.Departure == "",
+				To:       c.To,
+				Mode:     mode(c.Category),
+				Platform: c.Stop.Platform,
 			}
 			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
 				d.Departing = dp

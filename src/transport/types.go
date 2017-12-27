@@ -106,7 +106,7 @@ type ConnectionsResponse struct {
 			ArrivalTimestamp   interface{} `json:"arrivalTimestamp"`
 			Departure          string      `json:"departure"`
 			DepartureTimestamp int         `json:"departureTimestamp"`
-			Delay              int         `json:"delay"`
+			Delay              json.Number `json:"delay"`
 			Platform           string      `json:"platform"`
 			Prognosis          struct {
 				Platform    interface{} `json:"platform"`
@@ -144,7 +144,7 @@ type ConnectionsResponse struct {
 			ArrivalTimestamp   int         `json:"arrivalTimestamp"`
 			Departure          interface{} `json:"departure"`
 			DepartureTimestamp interface{} `json:"departureTimestamp"`
-			Delay              interface{} `json:"delay"`
+			Delay              json.Number `json:"delay"`
 			Platform           interface{} `json:"platform"`
 			Prognosis          struct {
 				Platform    interface{} `json:"platform"`
@@ -197,7 +197,7 @@ type ConnectionsResponse struct {
 					ArrivalTimestamp   interface{} `json:"arrivalTimestamp"`
 					Departure          string      `json:"departure"`
 					DepartureTimestamp int         `json:"departureTimestamp"`
-					Delay              int         `json:"delay"`
+					Delay              json.Number `json:"delay"`
 					Platform           string      `json:"platform"`
 					Prognosis          struct {
 						Platform    interface{} `json:"platform"`
@@ -241,7 +241,7 @@ type ConnectionsResponse struct {
 				ArrivalTimestamp   interface{} `json:"arrivalTimestamp"`
 				Departure          string      `json:"departure"`
 				DepartureTimestamp int         `json:"departureTimestamp"`
-				Delay              int         `json:"delay"`
+				Delay              json.Number `json:"delay"`
 				Platform           string      `json:"platform"`
 				Prognosis          struct {
 					Platform    interface{} `json:"platform"`
@@ -279,7 +279,7 @@ type ConnectionsResponse struct {
 				ArrivalTimestamp   int         `json:"arrivalTimestamp"`
 				Departure          interface{} `json:"departure"`
 				DepartureTimestamp interface{} `json:"departureTimestamp"`
-				Delay              int         `json:"delay"`
+				Delay              json.Number `json:"delay"`
 				Platform           string      `json:"platform"`
 				Prognosis          struct {
 					Platform    interface{} `json:"platform"`
