@@ -40,8 +40,8 @@ func tryParseStupidDate(raw string) time.Time {
 	return result
 }
 
-func mode(s transport.StationboardStation) string {
-	switch s.Category {
+func mode(category string) string {
+	switch category {
 	case "BUS":
 		return "bus"
 	case "T":
@@ -52,28 +52,17 @@ func mode(s transport.StationboardStation) string {
 		return "train"
 	}
 	// XXX: ????
-	return s.Category
+	return category
 }
 
-func prettyName(s transport.StationboardStation) string {
-	switch s.Category {
+func prettyName(category, number string) string {
+	switch category {
 	case "BUS":
-		return s.Number
+		return number
 	case "T":
-		return s.Number
+		return number
 	}
-	return fmt.Sprintf("%s%s", s.Category, s.Number)
-}
-
-func userGivenName(s transport.StationboardStation) string {
-	switch s.Category {
-	case "T":
-		return fmt.Sprintf("%s", s.Number)
-	case "BUS":
-		return fmt.Sprintf("%s", s.Number)
-	default:
-		return fmt.Sprintf("%s%s", s.Category, s.Number)
-	}
+	return fmt.Sprintf("%s%s", category, number)
 }
 
 func dialogflow(writer http.ResponseWriter, req *http.Request) {
@@ -96,15 +85,74 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime = tryParseStupidDate(dreq.Result.Parameters.DateTime)
-	sreq := transport.StationboardRequest{
-		Station:  dreq.Result.Parameters.Source,
-		Type:     transport.DEPARTURE, // XXX: Hardcoded for now
-		Datetime: startTime,
-	}
-	sresp, err := svc.Stationboard(sreq)
-	if err != nil {
-		http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
-		return
+	// Fill in the departures list to localize from *either* /connections or /stationboard.
+	// This lets us share the localization code.
+	departures := []localize.Departure{}
+
+	if dreq.Result.Parameters.Destination != "" {
+		// Do a /connections RPC.
+		creq := transport.ConnectionsRequest{
+			Station:     dreq.Result.Parameters.Source,
+			Destination: dreq.Result.Parameters.Destination,
+			Datetime:    startTime,
+		}
+		cresp, err := svc.Connections(creq)
+		if err != nil {
+			http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
+			return
+		}
+		for _, c := range cresp.Connections {
+			// XXX: Probably should support multiple-connection paths at some point.
+			nonWalking := 0
+			for _, j := range c.Sections {
+				if j.Walk.Duration > 0 {
+					nonWalking++
+				}
+			}
+			if nonWalking > 1 {
+				continue
+			}
+			d := localize.Departure{
+				Name:   prettyName(c.Sections[0].Journey.Category, c.Sections[0].Journey.Number),
+				OnTime: c.From.Prognosis.Departure == "",
+				To:     c.To.Station.Name,
+				Mode:   mode(c.Sections[0].Journey.Category),
+			}
+			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.From.Prognosis.Departure); c.From.Prognosis.Departure != "" && err != nil {
+				d.Departing = dp
+			} else {
+				d.Departing = time.Unix(int64(c.From.DepartureTimestamp), 0)
+			}
+			departures = append(departures, d)
+		}
+
+	} else {
+		// Do a /stationboard RPC.
+		sreq := transport.StationboardRequest{
+			Station:  dreq.Result.Parameters.Source,
+			Type:     transport.DEPARTURE, // XXX: Hardcoded for now
+			Datetime: startTime,
+		}
+		sresp, err := svc.Stationboard(sreq)
+		if err != nil {
+			http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
+			return
+		}
+		for _, c := range sresp.Stationboard {
+			d := localize.Departure{
+				Name:   prettyName(c.Category, c.Number),
+				OnTime: c.Stop.Prognosis.Departure == "",
+				To:     c.To,
+				Mode:   mode(c.Category),
+			}
+			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
+				d.Departing = dp
+			} else {
+				d.Departing = time.Unix(int64(c.Stop.DepartureTimestamp), 0)
+			}
+			departures = append(departures, d)
+		}
+
 	}
 	loc := localize.NewLocalizer(dreq.Lang)
 	// Then create response
@@ -129,14 +177,15 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	for _, tp := range dreq.Result.Parameters.Transport {
 		allowedModes[tp] = true
 	}
-	departures := []localize.Departure{}
-	for _, c := range sresp.Stationboard {
+
+	// Filter "departures."
+	filtered := []localize.Departure{}
+	for _, d := range departures {
 		// If the user specified specific routes, skip on that basis.
 		if len(dreq.Result.Parameters.Route) > 0 {
 			ok := false
-			n := userGivenName(c)
 			for _, r := range dreq.Result.Parameters.Route {
-				if n == r {
+				if d.Name == r {
 					ok = true
 				}
 			}
@@ -146,26 +195,15 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 		// Or if the user specified modes.
 		if len(allowedModes) > 0 {
-			if !allowedModes[mode(c)] {
+			if !allowedModes[d.Mode] {
 				continue
 			}
 		}
-		d := localize.Departure{
-			Name:   prettyName(c),
-			OnTime: c.Stop.Prognosis.Departure == "",
-			To:     c.To,
-			Mode:   mode(c),
-		}
-		if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
-			d.Departing = dp
-		} else {
-			d.Departing = time.Unix(int64(c.Stop.DepartureTimestamp), 0)
-		}
-		departures = append(departures, d)
-		if len(departures) == limit {
+		filtered = append(filtered, d)
+		if len(filtered) == limit {
 			break
 		}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, departures)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered)
 }

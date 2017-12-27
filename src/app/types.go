@@ -15,11 +15,12 @@ type DialogflowRequest struct {
 		Action           string `json:"action"`
 		ActionIncomplete bool   `json:"actionIncomplete"`
 		Parameters       struct {
-			Source    string      `json:"source"`
-			Transport []string    `json:"transport"`
-			Route     []string    `json:"route"`
-			Limit     json.Number `json:"limit"`
-			DateTime  string      `json:"date-time"`
+			Source      string      `json:"source"`
+			Destination string      `json:"destination"`
+			Transport   []string    `json:"transport"`
+			Route       []string    `json:"route"`
+			Limit       json.Number `json:"limit"`
+			DateTime    string      `json:"date-time"`
 		} `json:"parameters"`
 		Contexts []interface{} `json:"contexts"`
 		Metadata struct {
