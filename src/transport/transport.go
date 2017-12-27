@@ -76,10 +76,10 @@ func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse,
 func (t *Transport) Connections(req ConnectionsRequest) (ConnectionsResponse, error) {
 	params := map[string]string{}
 	if req.Station != "" {
-		params["station"] = req.Station
+		params["from"] = req.Station
 	}
 	if req.Station != "" {
-		params["destination"] = req.Destination
+		params["to"] = req.Destination
 	}
 	if req.Limit != 0 {
 		params["limit"] = strconv.Itoa(req.Limit)

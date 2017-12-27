@@ -80,7 +80,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	// Then dispatch to Opendata
 	svc := transport.Transport{
 		Client: urlfetch.Client(appengine.NewContext(req)),
-		Logger: func(x string) { log.Infof(appengine.NewContext(req), x) },
+		Logger: func(x string) { log.Infof(appengine.NewContext(req), "%s", x) },
 	}
 	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
@@ -114,7 +114,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 			}
 			d := localize.Departure{
 				Name:   prettyName(c.Sections[0].Journey.Category, c.Sections[0].Journey.Number),
-				OnTime: c.From.Prognosis.Departure == "",
+				OnTime: c.From.Delay > 0,
 				To:     c.To.Station.Name,
 				Mode:   mode(c.Sections[0].Journey.Category),
 			}
