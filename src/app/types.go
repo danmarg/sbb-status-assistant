@@ -15,10 +15,10 @@ type DialogflowRequest struct {
 		Action           string `json:"action"`
 		ActionIncomplete bool   `json:"actionIncomplete"`
 		Parameters       struct {
-			ZvvStops  string      `json:"zvv_stops"`
+			Source    string      `json:"source"`
 			Transport []string    `json:"transport"`
-			ZvvRoutes []string    `json:"zvv_routes"`
-			Cardinal  json.Number `json:"cardinal"`
+			Route     []string    `json:"route"`
+			Limit     json.Number `json:"limit"`
 			DateTime  string      `json:"date-time"`
 		} `json:"parameters"`
 		Contexts []interface{} `json:"contexts"`

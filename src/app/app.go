@@ -97,7 +97,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime = tryParseStupidDate(dreq.Result.Parameters.DateTime)
 	sreq := transport.StationboardRequest{
-		Station:  dreq.Result.Parameters.ZvvStops,
+		Station:  dreq.Result.Parameters.Source,
 		Type:     transport.DEPARTURE, // XXX: Hardcoded for now
 		Datetime: startTime,
 	}
@@ -121,7 +121,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 	}()
 	limit := 5 // Default
-	if i, err := dreq.Result.Parameters.Cardinal.Int64(); err == nil {
+	if i, err := dreq.Result.Parameters.Limit.Int64(); err == nil {
 		limit = int(i)
 	}
 
@@ -132,10 +132,10 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	departures := []localize.Departure{}
 	for _, c := range sresp.Stationboard {
 		// If the user specified specific routes, skip on that basis.
-		if len(dreq.Result.Parameters.ZvvRoutes) > 0 {
+		if len(dreq.Result.Parameters.Route) > 0 {
 			ok := false
 			n := userGivenName(c)
-			for _, r := range dreq.Result.Parameters.ZvvRoutes {
+			for _, r := range dreq.Result.Parameters.Route {
 				if n == r {
 					ok = true
 				}
@@ -167,5 +167,5 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.ZvvStops, startTime, departures)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, departures)
 }
