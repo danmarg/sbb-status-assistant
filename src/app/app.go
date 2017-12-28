@@ -77,11 +77,37 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		http.Error(writer, fmt.Sprintf("Error unmarshalling POST: %v", err), http.StatusInternalServerError)
 		return
 	}
-	// Then dispatch to Opendata
+	dresp := DialogflowResponse{}
 	svc := transport.Transport{
 		Client: urlfetch.Client(appengine.NewContext(req)),
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), "%s", x) },
 	}
+
+	switch dreq.Result.Metadata.IntentName {
+	case "next-departure":
+		dresp.Speech, err = stationboard(svc, dreq)
+	case "next-departures":
+		dresp.Speech, err = stationboard(svc, dreq)
+	default:
+		err = fmt.Errorf("Unknown intent %s", dreq.Result.Metadata.IntentName)
+	}
+
+	if err != nil {
+		http.Error(writer, err.Error(), http.StatusInternalServerError)
+	}
+	bs, err = json.Marshal(dresp)
+	if err != nil {
+		http.Error(writer, fmt.Sprintf("Error marshalling response: %v", err), http.StatusInternalServerError)
+		return
+	}
+	if _, err := writer.Write(bs); err != nil {
+		http.Error(writer, fmt.Sprintf("Error writing response: %v", err), http.StatusInternalServerError)
+		return
+	}
+}
+
+func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, error) {
+	// Then dispatch to Opendata
 	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime = tryParseStupidDate(dreq.Result.Parameters.DateTime)
@@ -98,8 +124,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 		cresp, err := svc.Connections(creq)
 		if err != nil {
-			http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
-			return
+			return "", fmt.Errorf("Error calling Opendata: %v", err)
 		}
 		for _, c := range cresp.Connections {
 			// XXX: Probably should support multiple-connection paths at some point.
@@ -139,8 +164,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		}
 		sresp, err := svc.Stationboard(sreq)
 		if err != nil {
-			http.Error(writer, fmt.Sprintf("Error calling Opendata: %v", err), http.StatusInternalServerError)
-			return
+			return "", fmt.Errorf("Error calling Opendata: %v", err)
 		}
 		for _, c := range sresp.Stationboard {
 			d := localize.Departure{
@@ -160,19 +184,6 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 
 	}
 	loc := localize.NewLocalizer(dreq.Lang)
-	// Then create response
-	dresp := DialogflowResponse{}
-	defer func() {
-		bs, err := json.Marshal(dresp)
-		if err != nil {
-			http.Error(writer, fmt.Sprintf("Error marshalling response: %v", err), http.StatusInternalServerError)
-			return
-		}
-		if _, err := writer.Write(bs); err != nil {
-			http.Error(writer, fmt.Sprintf("Error writing response: %v", err), http.StatusInternalServerError)
-			return
-		}
-	}()
 	limit := 5 // Default
 	if i, err := dreq.Result.Parameters.Limit.Int64(); err == nil {
 		limit = int(i)
@@ -209,6 +220,5 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 			break
 		}
 	}
-
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered)
+	return loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered), nil
 }
