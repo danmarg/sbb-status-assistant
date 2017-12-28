@@ -74,16 +74,28 @@ type DialogflowRequest struct {
 }
 
 type DialogflowResponse struct {
-	Speech      string `json:"speech"`
-	DisplayText string `json:"displayText"`
-	Data        struct {
+	Speech        string `json:"speech"`
+	DisplaySpeech string `json:"displayText"`
+	Data          struct {
 		Google struct {
-			ExpectUserResponse bool `json:"expect_user_response"`
-			IsSsml             bool `json:"is_ssml"`
-			PermissionsRequest struct {
-				OptContext  string   `json:"opt_context"`
-				Permissions []string `json:"permissions"`
-			} `json:"permissions_request"`
+			ExpectUserResponse bool          `json:"expect_user_response"`
+			IsSsml             bool          `json:"is_ssml"`
+			NoInputPrompts     []interface{} `json:"no_input_prompts"`
+			SystemIntent       struct {
+				Intent string `json:"intent"`
+				Spec   struct {
+					PermissionValueSpec struct {
+						OptContext  string   `json:"opt_context"`
+						Permissions []string `json:"permissions"`
+					} `json:"permission_value_spec"`
+				} `json:"spec"`
+			} `json:"system_intent"`
 		} `json:"google"`
 	} `json:"data"`
+	ContextOut []struct {
+		Name       string `json:"name"`
+		Lifespan   int    `json:"lifespan"`
+		Parameters struct {
+		} `json:"parameters"`
+	} `json:"contextOut"`
 }

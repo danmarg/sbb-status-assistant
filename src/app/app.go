@@ -118,7 +118,9 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	if lreq.Query == "" && !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
 		// Request the user location.
 		dresp.Speech = loc.NeedLocation()
-		dresp.Data.Google.PermissionsRequest.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
+		dresp.Data.Google.SystemIntent.Intent = "assistant.intent.action.PERMISSION"
+		dresp.Data.Google.SystemIntent.Spec.PermissionValueSpec.OptContext = loc.PermissionContext()
+		dresp.Data.Google.SystemIntent.Spec.PermissionValueSpec.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
 		return nil
 	}
 	lresp, err := svc.Locations(lreq)

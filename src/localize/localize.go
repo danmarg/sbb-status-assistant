@@ -45,6 +45,13 @@ func (l *Localizer) NeedLocation() string {
 	return "I need your location."
 }
 
+func (l *Localizer) PermissionContext() string {
+	if l.lang == language.German {
+		return "Um Haltestellen zu suchen."
+	}
+	return "To look for stations."
+}
+
 func (l *Localizer) Stations(near string, stations []Station) string {
 	parts := []string{}
 	for _, s := range stations {
