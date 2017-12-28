@@ -56,22 +56,23 @@ func (l *Localizer) Stations(near string, stations []Station) string {
 				part += fmt.Sprintf(", %d meters away", s.Distance)
 			}
 		}
+		parts = append(parts, part)
 	}
 	if len(parts) == 0 {
 		if l.lang == language.German {
 			return fmt.Sprintf("Ich konnte keine Haltestellen in der Nähe von %s finden.", near)
 		}
-		fmt.Sprintf("I could not find any matching stations near %s.", near)
+		return fmt.Sprintf("I could not find any matching stations near %s.", near)
 	} else if len(parts) == 1 {
 		if l.lang == language.German {
-			return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s,", near, parts[0])
+			return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s.", near, parts[0])
 		}
-		return fmt.Sprintf("The closest station to %s is: %s,", parts[0])
+		return fmt.Sprintf("The closest station to %s is: %s.", parts[0])
 	}
 	if l.lang == language.German {
-		return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s,", near, strings.Join(parts, ";"))
+		return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s.", near, strings.Join(parts, ";"))
 	}
-	return fmt.Sprintf("The closest stations to %s are: %s,", near, strings.Join(parts, ";"))
+	return fmt.Sprintf("The closest stations to %s are: %s.", near, strings.Join(parts, ";"))
 }
 
 func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {

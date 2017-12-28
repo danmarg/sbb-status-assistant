@@ -88,6 +88,8 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		err = stationboard(svc, dreq, &dresp)
 	case "next-departures":
 		err = stationboard(svc, dreq, &dresp)
+	case "find-stations":
+		err = findStations(svc, dreq, &dresp)
 	default:
 		err = fmt.Errorf("Unknown intent %s", dreq.Result.Metadata.IntentName)
 	}
@@ -125,8 +127,18 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	}
 
 	stats := []localize.Station{}
+	limit := 3
+	if l, _ := dreq.Result.Parameters.Limit.Int64(); l > 0 {
+		limit = int(l)
+	}
 	for _, s := range lresp.Stations {
+		if s.Name == "" {
+			continue
+		}
 		stats = append(stats, localize.Station{Name: s.Name, Distance: s.Distance})
+		if len(stats) == limit {
+			break
+		}
 	}
 	near := dreq.Result.Parameters.Query
 	if near == "" {
