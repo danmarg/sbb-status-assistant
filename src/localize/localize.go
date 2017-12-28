@@ -24,6 +24,11 @@ func NewLocalizer(lang string) Localizer {
 	return Localizer{tag, tz}
 }
 
+type Station struct {
+	Name     string
+	Distance int
+}
+
 type Departure struct {
 	Name      string
 	OnTime    bool
@@ -31,6 +36,42 @@ type Departure struct {
 	Departing time.Time
 	Mode      string
 	Platform  string
+}
+
+func (l *Localizer) NeedLocation() string {
+	if l.lang == language.German {
+		return "Ich brauche Ihren Standort."
+	}
+	return "I need your location."
+}
+
+func (l *Localizer) Stations(near string, stations []Station) string {
+	parts := []string{}
+	for _, s := range stations {
+		part := s.Name
+		if s.Distance > 0 {
+			if l.lang == language.German {
+				part += fmt.Sprintf(", %d Meter entfernt", s.Distance)
+			} else {
+				part += fmt.Sprintf(", %d meters away", s.Distance)
+			}
+		}
+	}
+	if len(parts) == 0 {
+		if l.lang == language.German {
+			return fmt.Sprintf("Ich konnte keine Haltestellen in der Nähe von %s finden.", near)
+		}
+		fmt.Sprintf("I could not find any matching stations near %s.", near)
+	} else if len(parts) == 1 {
+		if l.lang == language.German {
+			return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s,", near, parts[0])
+		}
+		return fmt.Sprintf("The closest station to %s is: %s,", parts[0])
+	}
+	if l.lang == language.German {
+		return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s,", near, strings.Join(parts, ";"))
+	}
+	return fmt.Sprintf("The closest stations to %s are: %s,", near, strings.Join(parts, ";"))
 }
 
 func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {
@@ -89,7 +130,7 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 
 	if len(parts) == 0 {
 		if l.lang == language.German {
-			return "Ich konnte keine passenden Haltestellen oder Linien."
+			return "Ich konnte keine passenden Haltestellen oder Linien finden."
 		}
 		return "I could not find any matching stations or routes."
 	} else if len(parts) == 1 {

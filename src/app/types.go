@@ -21,6 +21,7 @@ type DialogflowRequest struct {
 			Route       []string    `json:"route"`
 			Limit       json.Number `json:"limit"`
 			DateTime    string      `json:"date-time"`
+			Query       string      `json:"query"`
 		} `json:"parameters"`
 		Contexts []interface{} `json:"contexts"`
 		Metadata struct {
@@ -39,6 +40,30 @@ type DialogflowRequest struct {
 		} `json:"fulfillment"`
 		Score float32 `json:"score"`
 	} `json:"result"`
+	OriginalRequest struct {
+		Data struct {
+			User struct {
+				UserID  string `json:"user_id"`
+				Profile struct {
+					DisplayName string `json:"display_name"`
+					GivenName   string `json:"given_name"`
+					FamilyName  string `json:"family_name"`
+				} `json:"profile"`
+				AccessToken string `json:"access_token"`
+			} `json:"user"`
+			Device struct {
+				Location struct {
+					Coordinates struct {
+						Latitude  float64 `json:"latitude"`
+						Longitude float64 `json:"longitude"`
+					} `json:"coordinates"`
+					FormattedAddress string `json:"formatted_address"`
+					ZipCode          string `json:"zip_code"`
+					City             string `json:"city"`
+				} `json:"location"`
+			} `json:"device"`
+		} `json:"data"`
+	} `json:"originalRequest"`
 	Status struct {
 		Code            int    `json:"code"`
 		ErrorType       string `json:"errorType"`
@@ -51,5 +76,14 @@ type DialogflowRequest struct {
 type DialogflowResponse struct {
 	Speech      string `json:"speech"`
 	DisplayText string `json:"displayText"`
-	Source      string `json:"source"`
+	Data        struct {
+		Google struct {
+			ExpectUserResponse bool `json:"expect_user_response"`
+			IsSsml             bool `json:"is_ssml"`
+			PermissionsRequest struct {
+				OptContext  string   `json:"opt_context"`
+				Permissions []string `json:"permissions"`
+			} `json:"permissions_request"`
+		} `json:"google"`
+	} `json:"data"`
 }

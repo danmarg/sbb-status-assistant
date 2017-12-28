@@ -85,9 +85,9 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 
 	switch dreq.Result.Metadata.IntentName {
 	case "next-departure":
-		dresp.Speech, err = stationboard(svc, dreq)
+		err = stationboard(svc, dreq, &dresp)
 	case "next-departures":
-		dresp.Speech, err = stationboard(svc, dreq)
+		err = stationboard(svc, dreq, &dresp)
 	default:
 		err = fmt.Errorf("Unknown intent %s", dreq.Result.Metadata.IntentName)
 	}
@@ -106,7 +106,38 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, error) {
+func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
+	lreq := transport.LocationsRequest{
+		Query: dreq.Result.Parameters.Query,
+		Lat:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
+		Lon:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
+	}
+	loc := localize.NewLocalizer(dreq.Lang)
+	if lreq.Query == "" && !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
+		// Request the user location.
+		dresp.Speech = loc.NeedLocation()
+		dresp.Data.Google.PermissionsRequest.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
+		return nil
+	}
+	lresp, err := svc.Locations(lreq)
+	if err != nil {
+		return fmt.Errorf("Error calling Opendata: %v", err)
+	}
+
+	stats := []localize.Station{}
+	for _, s := range lresp.Stations {
+		stats = append(stats, localize.Station{Name: s.Name, Distance: s.Distance})
+	}
+	near := dreq.Result.Parameters.Query
+	if near == "" {
+		// Use device location.
+		near = dreq.OriginalRequest.Data.Device.Location.FormattedAddress
+	}
+	dresp.Speech = loc.Stations(near, stats)
+	return nil
+}
+
+func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime := tryParseStupidDate(dreq.Result.Parameters.DateTime)
 	// Fill in the departures list to localize from *either* /connections or /stationboard.
@@ -122,7 +153,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, erro
 		}
 		cresp, err := svc.Connections(creq)
 		if err != nil {
-			return "", fmt.Errorf("Error calling Opendata: %v", err)
+			return fmt.Errorf("Error calling Opendata: %v", err)
 		}
 		for _, c := range cresp.Connections {
 			// XXX: Probably should support multiple-connection paths at some point.
@@ -162,7 +193,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, erro
 		}
 		sresp, err := svc.Stationboard(sreq)
 		if err != nil {
-			return "", fmt.Errorf("Error calling Opendata: %v", err)
+			return fmt.Errorf("Error calling Opendata: %v", err)
 		}
 		for _, c := range sresp.Stationboard {
 			d := localize.Departure{
@@ -218,5 +249,6 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, erro
 			break
 		}
 	}
-	return loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered), nil
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered)
+	return nil
 }

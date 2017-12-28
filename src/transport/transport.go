@@ -49,11 +49,11 @@ func (t *Transport) Locations(req LocationsRequest) (LocationsResponse, error) {
 	if req.Query != "" {
 		params["query"] = req.Query
 	}
-	if req.Lat != "" {
-		params["x"] = req.Lat
+	if req.Lat != 0.0 {
+		params["x"] = strconv.FormatFloat(req.Lat, 'f', -1, 32)
 	}
-	if req.Lon != "" {
-		params["y"] = req.Lon
+	if req.Lon != 0.0 {
+		params["y"] = strconv.FormatFloat(req.Lon, 'f', -1, 32)
 	}
 	for i, tp := range req.Transportations {
 		if i > 0 {
