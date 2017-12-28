@@ -78,6 +78,28 @@ type StationboardResponse struct {
 	} `json:"stationboard"`
 }
 
+type LocationsRequest struct {
+	Query           string
+	Lat             string
+	Lon             string
+	Transportations []int // One of the consts above
+	// Note that the API also takes a "Type" parameter, but here we only want to support station lookups.
+}
+
+type LocationsResponse struct {
+	Stations []struct {
+		ID         interface{} `json:"id"`
+		Name       string      `json:"name"`
+		Score      interface{} `json:"score"`
+		Coordinate struct {
+			Type string      `json:"type"`
+			X    interface{} `json:"x"`
+			Y    interface{} `json:"y"`
+		} `json:"coordinate"`
+		Distance interface{} `json:"distance"`
+	} `json:"stations"`
+}
+
 type ConnectionsRequest struct {
 	Station         string
 	Destination     string

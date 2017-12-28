@@ -11,11 +11,60 @@ import (
 const (
 	stationboardEndpoint = "http://transport.opendata.ch/v1/stationboard"
 	connectionsEndpoint  = "http://transport.opendata.ch/v1/connections"
+	locationsEndpoint    = "http://transport.opendata.ch/v1/locations"
 )
 
 type Transport struct {
 	Client *http.Client
 	Logger func(string)
+}
+
+func (t *Transport) dispatch(endpoint string, params map[string]string, result interface{}) error {
+	strParams := []string{}
+	for k, v := range params {
+		strParams = append(strParams, k+"="+url.QueryEscape(v))
+	}
+
+	u := endpoint + "?" + strings.Join(strParams, "&")
+	if t.Logger != nil {
+		t.Logger("OpenTransport URL: " + u)
+	}
+	rq, err := http.NewRequest("GET", u, nil)
+	if err != nil {
+		return err
+	}
+
+	rsp, err := t.Client.Do(rq)
+	if err != nil {
+		return err
+	}
+
+	defer rsp.Body.Close()
+
+	return json.NewDecoder(rsp.Body).Decode(result)
+}
+
+func (t *Transport) Locations(req LocationsRequest) (LocationsResponse, error) {
+	params := map[string]string{}
+	if req.Query != "" {
+		params["query"] = req.Query
+	}
+	if req.Lat != "" {
+		params["x"] = req.Lat
+	}
+	if req.Lon != "" {
+		params["y"] = req.Lon
+	}
+	for i, tp := range req.Transportations {
+		if i > 0 {
+			params["transportations"] += ","
+		}
+		params["transportations"] += transportations[tp]
+	}
+
+	var resp LocationsResponse
+	err := t.dispatch(locationsEndpoint, params, &resp)
+	return resp, err
 }
 
 func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse, error) {
@@ -41,36 +90,11 @@ func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse,
 	if req.Type != 0 {
 		params["type"] = types[req.Type]
 	}
-
-	strParams := []string{}
-	for k, v := range params {
-		strParams = append(strParams, k+"="+url.QueryEscape(v))
-	}
-
-	u := stationboardEndpoint + "?" + strings.Join(strParams, "&")
-	if t.Logger != nil {
-		t.Logger("OpenTransport URL: " + u)
-	}
-	rq, err := http.NewRequest("GET", u, nil)
-	if err != nil {
-		return StationboardResponse{}, err
-	}
-
-	rsp, err := t.Client.Do(rq)
-	if err != nil {
-		return StationboardResponse{}, err
-	}
-
-	defer rsp.Body.Close()
-
 	var resp StationboardResponse
-	if err := json.NewDecoder(rsp.Body).Decode(&resp); err != nil {
-		return StationboardResponse{}, err
-	}
-
+	err := t.dispatch(stationboardEndpoint, params, &resp)
 	// Post-filter by routes, since this isn't supported by the Opendata.ch API.
 	// XXX: I think we can filter by the Number field...?
-	return resp, nil
+	return resp, err
 }
 
 func (t *Transport) Connections(req ConnectionsRequest) (ConnectionsResponse, error) {
@@ -94,33 +118,10 @@ func (t *Transport) Connections(req ConnectionsRequest) (ConnectionsResponse, er
 		params["date"] = req.Datetime.Format("2006-01-02")
 		params["time"] = req.Datetime.Format("15:04")
 	}
-
-	strParams := []string{}
-	for k, v := range params {
-		strParams = append(strParams, k+"="+url.QueryEscape(v))
-	}
-	u := connectionsEndpoint + "?" + strings.Join(strParams, "&")
-	if t.Logger != nil {
-		t.Logger("OpenTransport URL: " + u)
-	}
-	rq, err := http.NewRequest("GET", u, nil)
-	if err != nil {
-		return ConnectionsResponse{}, err
-	}
-
-	rsp, err := t.Client.Do(rq)
-	if err != nil {
-		return ConnectionsResponse{}, err
-	}
-
-	defer rsp.Body.Close()
-
 	var resp ConnectionsResponse
-	if err := json.NewDecoder(rsp.Body).Decode(&resp); err != nil {
-		return ConnectionsResponse{}, err
-	}
+	err := t.dispatch(connectionsEndpoint, params, &resp)
 
 	// Post-filter by routes, since this isn't supported by the Opendata.ch API.
 	// XXX: I think we can filter by the Number field...?
-	return resp, nil
+	return resp, err
 }

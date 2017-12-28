@@ -107,10 +107,8 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 }
 
 func stationboard(svc transport.Transport, dreq DialogflowRequest) (string, error) {
-	// Then dispatch to Opendata
-	var startTime time.Time
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
-	startTime = tryParseStupidDate(dreq.Result.Parameters.DateTime)
+	startTime := tryParseStupidDate(dreq.Result.Parameters.DateTime)
 	// Fill in the departures list to localize from *either* /connections or /stationboard.
 	// This lets us share the localization code.
 	departures := []localize.Departure{}
