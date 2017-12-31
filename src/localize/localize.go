@@ -108,6 +108,7 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 			}
 		} else {
 			part += "the "
+			mode = d.Mode
 		}
 		part += fmt.Sprintf("%s %s ", d.Name, mode)
 		tm := d.Departing.In(l.tz).Format("15:04")
