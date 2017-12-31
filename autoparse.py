@@ -66,18 +66,17 @@ for entity in entities.keys():
 
 reverse = {}  # Alternate values for entities, to try to ensure uniqueness.
 for entity, alternates in entities.items():
+    alternates = copy.copy(alternates)
     for alt in alternates:
         if alt in reverse:
             print('Found conflicting alternate',alt,'maps to',entity,'and',reverse[alt])
             # Prefer the version with lower edit distance from the original.
             if edit_distance(alt, reverse[alt]) < edit_distance(alt, entity):
                 print('Preferring',reverse[alt])
-                entities[entity] = set(
-                        [a for a in alternates if a != alt])
+                entities[entity].remove(alt)
             else:
                 print('Preferring',entity)
-                entities[reverse[alt]] = set(
-                        [a for a in entities[reverse[alt]] if a != alt])
+                entities[reverse[alt]].remove(alt)
                 reverse[alt] = entity
         else:
             reverse[alt] = entity
