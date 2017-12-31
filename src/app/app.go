@@ -47,7 +47,9 @@ func mode(category string) string {
 	case "T":
 		return "tram"
 	case "IC":
+		fallthrough
 	case "IR":
+		fallthrough
 	case "S":
 		return "train"
 	}
