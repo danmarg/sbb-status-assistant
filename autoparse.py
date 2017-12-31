@@ -26,6 +26,20 @@ parser.add_argument("input")
 parser.add_argument("output")
 args = parser.parse_args()
 
+def edit_distance(s1, s2):
+    m=len(s1)+1
+    n=len(s2)+1
+
+    tbl = {}
+    for i in range(m): tbl[i,0]=i
+    for j in range(n): tbl[0,j]=j
+    for i in range(1, m):
+        for j in range(1, n):
+            cost = 0 if s1[i-1] == s2[j-1] else 1
+            tbl[i,j] = min(tbl[i, j-1]+1, tbl[i-1, j]+1, tbl[i-1, j-1]+cost)
+
+    return tbl[i,j]
+
 entities = {}
 # The CSV has names in column 2 (0-indexed).
 with open(args.input, 'r') as f:
@@ -49,6 +63,24 @@ for entity in entities.keys():
         if unchanged > 2:
             break
         entities[entity] = new
+
+reverse = {}  # Alternate values for entities, to try to ensure uniqueness.
+for entity, alternates in entities.items():
+    for alt in alternates:
+        if alt in reverse:
+            print('Found conflicting alternate',alt,'maps to',entity,'and',reverse[alt])
+            # Prefer the version with lower edit distance from the original.
+            if edit_distance(alt, reverse[alt]) < edit_distance(alt, entity):
+                print('Preferring',reverse[alt])
+                entities[entity] = set(
+                        [a for a in alternates if a != alt])
+            else:
+                print('Preferring',entity)
+                entities[reverse[alt]] = set(
+                        [a for a in entities[reverse[alt]] if a != alt])
+                reverse[alt] = entity
+        else:
+            reverse[alt] = entity
 
 print('Processed',len(entities),'items')
 
