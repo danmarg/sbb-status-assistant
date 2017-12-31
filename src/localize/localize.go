@@ -74,7 +74,7 @@ func (l *Localizer) Stations(near string, stations []Station) string {
 		if l.lang == language.German {
 			return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s.", near, parts[0])
 		}
-		return fmt.Sprintf("The closest station to %s is: %s.", parts[0])
+		return fmt.Sprintf("The closest station to %s is: %s.", near, parts[0])
 	}
 	if l.lang == language.German {
 		return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s.", near, strings.Join(parts, "; "))
