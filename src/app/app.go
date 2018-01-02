@@ -68,15 +68,19 @@ func prettyName(category, number string) string {
 }
 
 func dialogflow(writer http.ResponseWriter, req *http.Request) {
+	handleError := func(f string, xs ...interface{}) {
+		log.Errorf(appengine.NewContext(req), f, xs...)
+		http.Error(writer, fmt.Sprintf(f, xs...), http.StatusInternalServerError)
+	}
 	// Parse request body into DialogflowRequest
 	dreq := DialogflowRequest{}
 	bs, err := ioutil.ReadAll(req.Body)
 	if err != nil {
-		http.Error(writer, fmt.Sprintf("Error reading POST: %v", err), http.StatusInternalServerError)
+		handleError("Error reading POST: %v", err)
 		return
 	}
 	if err := json.Unmarshal(bs, &dreq); err != nil {
-		http.Error(writer, fmt.Sprintf("Error unmarshalling POST: %v", err), http.StatusInternalServerError)
+		handleError("Error unmarshalling POST: %v", err)
 		return
 	}
 	dresp := DialogflowResponse{}
@@ -97,15 +101,15 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 
 	if err != nil {
-		http.Error(writer, err.Error(), http.StatusInternalServerError)
+		handleError("%v", err)
 	}
 	bs, err = json.Marshal(dresp)
 	if err != nil {
-		http.Error(writer, fmt.Sprintf("Error marshalling response: %v", err), http.StatusInternalServerError)
+		handleError("Error marshalling response: %v", err)
 		return
 	}
 	if _, err := writer.Write(bs); err != nil {
-		http.Error(writer, fmt.Sprintf("Error writing response: %v", err), http.StatusInternalServerError)
+		handleError("Error writing response: %v", err)
 		return
 	}
 }
