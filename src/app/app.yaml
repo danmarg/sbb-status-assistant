@@ -3,9 +3,13 @@ api_version: go1
 
 handlers:
 
-  - url: /privacy
-    static_files: static/privacy.txt
-    upload: static/privacy.txt
+  - url: /en-privacy
+    static_files: static/en-privacy.txt
+    upload: static/en-privacy.txt
+
+  - url: /de-privacy
+    static_files: static/de-privacy.txt
+    upload: static/de-privacy.txt
 
   - url: /.*
     secure: always

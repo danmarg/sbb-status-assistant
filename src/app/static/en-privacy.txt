@@ -1,0 +1,26 @@
+"SWISS TRANSIT" ASSISTANT ACTION PRIVACY POLICY
+
+The "Swiss Transit" Assistant action collects the following data when you use
+the action:
+
+* Query text: What you input to the action (for example, "What are the next
+  trains from Zurich HB?")
+* Query metadata: Time the query was issued
+
+We do not have access to personally identifiable data such as your IP address,
+email address, or name.
+
+Logged data are used only to improve the service; in particular, queries are
+used to improve both the query parser and data sources (i.e. SBB stops, routes,
+etc).
+
+The live SBB transit data are provided by the API at
+https://transport.opendata.ch. Opendata.ch do not themselves provide a privacy
+policy, however, their data source is Search.ch, whose API terms of use are
+here: https://timetable.search.ch/api/terms. Opendata.ch and Search.ch have
+access to a limited subset of the data described above; specifically, query
+parameters (requested stops, destinations, routes, and times), but not raw
+query text.
+
+Finally, the Google Assistant integration is, of course, provided by Google,
+whose privacy policy is here: https://www.google.com/policies/privacy/.

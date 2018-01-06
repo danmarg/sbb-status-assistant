@@ -1,0 +1,26 @@
+"SCHWEIZER ÖV" ASSISTANT AKTION DATENSCHUTZERKLÄRUNG
+
+Die Assistant Aktion "Schweizer ÖV" sammelt während der Verwendung die folgende
+Daten:
+
+* Abfragetext: Was Sie in die Aktion eingeben (z.B. "Was sind die nächste Züge
+  von Zürich HB?")
+* Abfrage-Metadaten: Abfragezeit
+
+Wir haben keinen Zugriff auf persönlich identifizierbare Daten wie Ihre
+IP-Adresse, E-Mail-Adresse, oder Name.
+
+Sammelte Daten werden nur zur Verbesserung des Dienstes verwendet.
+Insbesondere, Abfragen sind verwendet um den Afrageparser und Datenquellen zu
+verbessern (z.B. SBB-Haltestellen, Routen, usw.).
+
+Die Live-SBB-Transitdaten sind von der API von https://transport.opendata.ch
+gestellt. Opendata.ch selbst veröffentlichen keine Datenschutzerklärung, aber
+ihre Datenquelle ist Search.ch, die veröffentlichen eine API Nutzungserklärung
+hier: https://timetable.search.ch/api/terms. Opendata.ch und Search.ch haben
+Zugriff auf eine begrenzte Teilmenge der oben beschriebenen Daten: Abfrage
+Parameter (angeforderte Haltestelle, Ziele, Routen, und Zeiten), aber nicht roh
+Abfragetext.
+
+Schließlich, die Google Assistant ist natürlich von Google gestellt; die Google
+Datenschutzerklärung ist hier: https://www.google.com/policies/privacy/. 
