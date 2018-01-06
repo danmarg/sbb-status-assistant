@@ -5,6 +5,7 @@ import argparse
 import copy
 import collections
 import csv
+import distutils.util
 import json
 import re
 
@@ -23,9 +24,9 @@ REPLACEMENTS = [
 ]
 
 parser = argparse.ArgumentParser()
-parser.add_argument("input")
-parser.add_argument("output")
-parser.add_argument("json")
+parser.add_argument('input')
+parser.add_argument('output')
+parser.add_argument('--json', dest='json', type=lambda x:bool(distutils.util.strtobool(x)))
 args = parser.parse_args()
 
 def edit_distance(s1, s2):
