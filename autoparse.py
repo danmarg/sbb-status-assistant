@@ -10,7 +10,7 @@ import re
 
 REPLACEMENTS = [
     (r'\s*Z[üu]rich\s*', ''),
-    (r'\s*Bahnhof\s*', ''),
+    (r'(^|[\s,/]+)Bahnhof([\s,/]+|$)', ''),
     (r'ü', 'ue'),
     (r'ü', 'u'),
     (r'ö', 'oe'),
