@@ -18,10 +18,9 @@ var matcher = language.NewMatcher([]language.Tag{
 	language.German,
 })
 
-func NewLocalizer(lang string) Localizer {
+func NewLocalizer(lang string, timezone *time.Location) Localizer {
 	tag, _ := language.MatchStrings(matcher, lang)
-	tz, _ := time.LoadLocation("Europe/Zurich")
-	return Localizer{tag, tz}
+	return Localizer{tag, timezone}
 }
 
 type Station struct {

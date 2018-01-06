@@ -38,8 +38,7 @@ func tryParseStupidDate(raw string) time.Time {
 		result = time.Date(now.Year(), now.Month(), now.Day(), result.Hour(), result.Minute(), result.Second(), 0, now.Location())
 	}
 	if !result.IsZero() { // Make sure it's Swiss time or something.
-		l, _ := time.LoadLocation("Europe/Zurich")
-		result = result.In(l)
+		result = result.In(timezone)
 	}
 	return result
 }
@@ -119,7 +118,7 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 		Lat:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
 		Lon:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
 	}
-	loc := localize.NewLocalizer(dreq.Lang)
+	loc := localize.NewLocalizer(dreq.Lang, timezone)
 	if lreq.Query == "" && !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
 		// Request the user location.
 		dresp.Speech = loc.NeedLocation()
@@ -238,7 +237,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			departures = append(departures, d)
 		}
 	}
-	loc := localize.NewLocalizer(dreq.Lang)
+	loc := localize.NewLocalizer(dreq.Lang, timezone)
 	limit := 5 // Default
 	if i, err := dreq.Result.Parameters.Limit.Int64(); err == nil {
 		limit = int(i)
