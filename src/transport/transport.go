@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	stationboardEndpoint = "http://transport.opendata.ch/v1/stationboard"
-	connectionsEndpoint  = "http://transport.opendata.ch/v1/connections"
-	locationsEndpoint    = "http://transport.opendata.ch/v1/locations"
+	stationboardEndpoint = "https://timetable.search.ch/api/stationboard.json"
+	connectionsEndpoint  = "https://timetable.search.ch/api/route.json"
+	locationsEndpoint    = "https://timetable.search.ch/api/completion.json"
 )
 
 type Transport struct {
@@ -47,19 +47,11 @@ func (t *Transport) dispatch(endpoint string, params map[string]string, result i
 func (t *Transport) Locations(req LocationsRequest) (LocationsResponse, error) {
 	params := map[string]string{}
 	if req.Query != "" {
-		params["query"] = req.Query
+		params["term"] = req.Query
 	}
-	if req.Lat != 0.0 {
-		params["x"] = strconv.FormatFloat(req.Lat, 'f', -1, 32)
-	}
-	if req.Lon != 0.0 {
-		params["y"] = strconv.FormatFloat(req.Lon, 'f', -1, 32)
-	}
-	for i, tp := range req.Transportations {
-		if i > 0 {
-			params["transportations"] += ","
-		}
-		params["transportations"] += transportations[tp]
+	if req.Lat != 0.0 && req.Lon != 0.0 {
+		params["latlon"] = strconv.FormatFloat(req.Lat, 'f', -1, 32) + "," +
+			strconv.FormatFloat(req.Lon, 'f', -1, 32)
 	}
 
 	var resp LocationsResponse
@@ -70,30 +62,27 @@ func (t *Transport) Locations(req LocationsRequest) (LocationsResponse, error) {
 func (t *Transport) Stationboard(req StationboardRequest) (StationboardResponse, error) {
 	params := map[string]string{}
 	if req.Station != "" {
-		params["station"] = req.Station
-	}
-	if req.Id != "" {
-		params["id"] = req.Id
+		params["stop"] = req.Station
 	}
 	if req.Limit != 0 {
 		params["limit"] = strconv.Itoa(req.Limit)
 	}
-	for i, tp := range req.Transportations {
-		if i > 0 {
-			params["transportations"] += ","
-		}
-		params["transportations"] += transportations[tp]
-	}
 	if !req.Datetime.IsZero() {
-		params["datetime"] = req.Datetime.Format("2006-01-02 15:04")
+		params["date"] = req.Datetime.Format("2006-01-02")
+		params["time"] = req.Datetime.Format("15:04")
 	}
-	if req.Type != 0 {
-		params["type"] = types[req.Type]
+	if req.Mode == ARRIVAL {
+		params["mode"] = "arrival"
+	} else {
+		params["mode"] = "depart"
 	}
+	params["show_tracks"] = "true"
+	params["show_delays"] = "true"
+	params["show_subsequent_stops"] = "true"
+	params["show_trackchanges"] = "true"
+
 	var resp StationboardResponse
 	err := t.dispatch(stationboardEndpoint, params, &resp)
-	// Post-filter by routes, since this isn't supported by the Opendata.ch API.
-	// XXX: I think we can filter by the Number field...?
 	return resp, err
 }
 
@@ -102,26 +91,23 @@ func (t *Transport) Connections(req ConnectionsRequest) (ConnectionsResponse, er
 	if req.Station != "" {
 		params["from"] = req.Station
 	}
-	if req.Station != "" {
+	if req.Destination != "" {
 		params["to"] = req.Destination
 	}
-	if req.Limit != 0 {
-		params["limit"] = strconv.Itoa(req.Limit)
+	if req.Via != "" {
+		params["via"] = req.Via
 	}
-	for i, tp := range req.Transportations {
-		if i > 0 {
-			params["transportations"] += ","
-		}
-		params["transportations"] += transportations[tp]
+	if req.Limit != 0 {
+		params["num"] = strconv.Itoa(req.Limit)
 	}
 	if !req.Datetime.IsZero() {
 		params["date"] = req.Datetime.Format("2006-01-02")
 		params["time"] = req.Datetime.Format("15:04")
 	}
+	params["show_delays"] = "true"
+	params["show_trackchanges"] = "true"
+
 	var resp ConnectionsResponse
 	err := t.dispatch(connectionsEndpoint, params, &resp)
-
-	// Post-filter by routes, since this isn't supported by the Opendata.ch API.
-	// XXX: I think we can filter by the Number field...?
 	return resp, err
 }

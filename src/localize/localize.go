@@ -26,16 +26,17 @@ func NewLocalizer(lang string) Localizer {
 
 type Station struct {
 	Name     string
-	Distance int
+	Distance float64
 }
 
 type Departure struct {
-	Name      string
-	OnTime    bool
-	To        string
-	Departing time.Time
-	Mode      string
-	Platform  string
+	Name         string
+	MinutesDelay int
+	From         string
+	To           string
+	Departing    time.Time
+	Mode         string
+	Platform     string
 }
 
 func (l *Localizer) NeedLocation() string {
@@ -113,20 +114,20 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 		part += fmt.Sprintf("%s %s ", d.Name, mode)
 		tm := d.Departing.In(l.tz).Format("15:04")
 		if l.lang == language.German {
-			if d.OnTime {
+			if d.MinutesDelay < 1 {
 				part += "pünktlich abfahren "
 			} else {
-				part += "abfahren mit einer Verspätung "
+				part += fmt.Sprintf("abfahren mit einer %d Minuten Verspätung ", d.MinutesDelay)
 			}
 			if d.Platform != "" {
 				part += fmt.Sprintf("von Gleis %s ", d.Platform)
 			}
 			part += fmt.Sprintf("nach %s um %s", d.To, tm)
 		} else {
-			if d.OnTime {
+			if d.MinutesDelay < 1 {
 				part += "departing on-time "
 			} else {
-				part += "departing behind schedule "
+				part += fmt.Sprintf("departing with a %d minute delay ", d.MinutesDelay)
 			}
 			if d.Platform != "" {
 				part += fmt.Sprintf("from platform %s ", d.Platform)

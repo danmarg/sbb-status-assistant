@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"time"
 
 	"google.golang.org/appengine"
@@ -15,8 +16,11 @@ import (
 	"transport"
 )
 
+var timezone *time.Location
+
 func init() {
 	http.HandleFunc("/dialogflow", dialogflow)
+	timezone, _ = time.LoadLocation("Europe/Zurich")
 }
 
 // Returns zero time if failure.
@@ -41,17 +45,12 @@ func tryParseStupidDate(raw string) time.Time {
 }
 
 func mode(category string) string {
-	switch category {
-	case "BUS":
-		return "bus"
-	case "T":
-		return "tram"
-	case "IC":
-		fallthrough
-	case "IR":
-		fallthrough
-	case "S":
-		return "train"
+	if r, ok := map[string]string{
+		"strain":        "train",
+		"express_train": "train",
+		"walk":          "walk",
+		"tram":          "tram"}[category]; ok {
+		return r
 	}
 	// XXX: ????
 	return category
@@ -139,11 +138,8 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	if l, _ := dreq.Result.Parameters.Limit.Int64(); l > 0 {
 		limit = int(l)
 	}
-	for _, s := range lresp.Stations {
-		if s.Name == "" {
-			continue
-		}
-		stats = append(stats, localize.Station{Name: s.Name, Distance: s.Distance})
+	for _, s := range lresp {
+		stats = append(stats, localize.Station{Name: s.Label, Distance: s.Dist})
 		if len(stats) == limit {
 			break
 		}
@@ -160,6 +156,7 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime := tryParseStupidDate(dreq.Result.Parameters.DateTime)
+
 	// Fill in the departures list to localize from *either* /connections or /stationboard.
 	// This lets us share the localization code.
 	departures := []localize.Departure{}
@@ -176,61 +173,70 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			return fmt.Errorf("Error calling Opendata: %v", err)
 		}
 		for _, c := range cresp.Connections {
-			// XXX: Probably should support multiple-connection paths at some point.
-			nonWalking := 0
-			for _, j := range c.Sections {
-				if j.Walk.Duration > 0 {
-					nonWalking++
+			// Find the first non-walking departure leg.
+			for _, l := range c.Legs {
+				// XXX: Probably should warn people if they have to walk somewhere first.
+				if l.Type == "walk" {
+					continue
 				}
+				d := localize.Departure{
+					From:     c.From,
+					Name:     l.Line,
+					To:       l.Exit.SbbName,
+					Mode:     mode(l.Type),
+					Platform: l.SbbName,
+				}
+				if l.DepDelay == "" {
+				} else if del, err := strconv.Atoi(l.DepDelay); err != nil {
+					return err
+				} else {
+					d.MinutesDelay = del
+				}
+				if tm, err := time.ParseInLocation("2006-01-02 15:04:05", l.Departure, timezone); err != nil {
+					return err
+				} else {
+					d.Departing = tm
+				}
+				departures = append(departures, d)
+				// Skip the following legs of the journey.
+				// XXX: Probably should say SOMETHING about them.
+				break
 			}
-			if nonWalking > 1 {
-				continue
-			}
-			d := localize.Departure{
-				Name:     prettyName(c.Sections[0].Journey.Category, c.Sections[0].Journey.Number),
-				To:       c.To.Station.Name,
-				OnTime:   true,
-				Mode:     mode(c.Sections[0].Journey.Category),
-				Platform: c.From.Platform,
-			}
-			if x, _ := c.From.Delay.Int64(); c.From.Delay.String() != "" && x > 0 {
-				d.OnTime = false
-			}
-			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.From.Prognosis.Departure); c.From.Prognosis.Departure != "" && err != nil {
-				d.Departing = dp
-			} else {
-				d.Departing = time.Unix(int64(c.From.DepartureTimestamp), 0)
-			}
-			departures = append(departures, d)
+
 		}
 
 	} else {
 		// Do a /stationboard RPC.
 		sreq := transport.StationboardRequest{
 			Station:  dreq.Result.Parameters.Source,
-			Type:     transport.DEPARTURE, // XXX: Hardcoded for now
+			Mode:     transport.DEPARTURE, // XXX: Hardcoded for now
 			Datetime: startTime,
 		}
 		sresp, err := svc.Stationboard(sreq)
 		if err != nil {
 			return fmt.Errorf("Error calling Opendata: %v", err)
 		}
-		for _, c := range sresp.Stationboard {
+		for _, c := range sresp.Connections {
 			d := localize.Departure{
-				Name:     prettyName(c.Category, c.Number),
-				OnTime:   c.Stop.Prognosis.Departure == "",
-				To:       c.To,
-				Mode:     mode(c.Category),
-				Platform: c.Stop.Platform,
+				From:     sresp.Stop.Name,
+				Name:     c.Line,
+				To:       c.Terminal.Name,
+				Mode:     mode(c.Type),
+				Platform: c.Track,
 			}
-			if dp, err := time.Parse("2006-01-02T15:04:05-07:00", c.Stop.Prognosis.Departure); c.Stop.Prognosis.Departure != "" && err != nil {
-				d.Departing = dp
+			if c.DepDelay == "" {
+			} else if del, err := strconv.Atoi(c.DepDelay); err != nil {
+				return err
 			} else {
-				d.Departing = time.Unix(int64(c.Stop.DepartureTimestamp), 0)
+				d.MinutesDelay = del
+			}
+			if tm, err := time.ParseInLocation("2006-01-02 15:04:05", c.Time, timezone); err != nil {
+				return err
+			} else {
+				d.Departing = tm
 			}
 			departures = append(departures, d)
 		}
-
 	}
 	loc := localize.NewLocalizer(dreq.Lang)
 	limit := 5 // Default
