@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"google.golang.org/appengine"
@@ -16,11 +17,22 @@ import (
 	"transport"
 )
 
-var timezone *time.Location
+var (
+	timezone *time.Location
+	stations entityMap
+)
 
 func init() {
+	var err error
+	timezone, err = time.LoadLocation("Europe/Zurich")
+	if err != nil {
+		panic(err)
+	}
+	stations, err = loadEntities()
+	if err != nil {
+		panic(err)
+	}
 	http.HandleFunc("/dialogflow", dialogflow)
-	timezone, _ = time.LoadLocation("Europe/Zurich")
 }
 
 // Returns zero time if failure.
@@ -152,6 +164,13 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	return nil
 }
 
+func normalizeStation(s string) string {
+	if n, ok := stations[strings.ToLower(s)]; ok {
+		return n
+	}
+	return s
+}
+
 func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime := tryParseStupidDate(dreq.Result.Parameters.DateTime)
@@ -162,9 +181,10 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 
 	if dreq.Result.Parameters.Destination != "" {
 		// Do a /connections RPC.
+
 		creq := transport.ConnectionsRequest{
-			Station:     dreq.Result.Parameters.Source,
-			Destination: dreq.Result.Parameters.Destination,
+			Station:     normalizeStation(dreq.Result.Parameters.Source),
+			Destination: normalizeStation(dreq.Result.Parameters.Destination),
 			Datetime:    startTime,
 		}
 		cresp, err := svc.Connections(creq)
@@ -207,7 +227,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	} else {
 		// Do a /stationboard RPC.
 		sreq := transport.StationboardRequest{
-			Station:  dreq.Result.Parameters.Source,
+			Station:  normalizeStation(dreq.Result.Parameters.Source),
 			Mode:     transport.DEPARTURE, // XXX: Hardcoded for now
 			Datetime: startTime,
 		}

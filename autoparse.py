@@ -5,6 +5,7 @@ import argparse
 import copy
 import collections
 import csv
+import json
 import re
 
 REPLACEMENTS = [
@@ -24,6 +25,7 @@ REPLACEMENTS = [
 parser = argparse.ArgumentParser()
 parser.add_argument("input")
 parser.add_argument("output")
+parser.add_argument("json")
 args = parser.parse_args()
 
 def edit_distance(s1, s2):
@@ -91,8 +93,14 @@ for entity, values in entities.items():
 print('Merged into',len(processed),'items')
 
 with open(args.output, 'w') as f:
-    w = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
-    for entity, values in processed.items():
-        w.writerow([entity] + list([x for x in values
-                                    if not '(' in x and not ')' in x]))
-
+    if args.json:
+        m = {}
+        for entity, values in entities.items():
+            for v in values:
+                m[v.lower()] = entity
+        f.write(json.dumps(m))
+    else:
+        w = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
+        for entity, values in processed.items():
+            w.writerow([entity] + list([x for x in values
+                                        if not '(' in x and not ')' in x]))
