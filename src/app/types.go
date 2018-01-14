@@ -73,29 +73,34 @@ type DialogflowRequest struct {
 	SessionID string `json:"sessionId"`
 }
 
+type DialogflowResponse_Data_Google_SystemIntent struct {
+	Intent string `json:"intent,omitempty"`
+	Data   struct {
+		Type        string   `json:"@type,omitempty"`
+		OptContext  string   `json:"opt_context,omitempty"`
+		Permissions []string `json:"permissions,omitempty"`
+	} `json:"data,omitempty"`
+}
+
+type DialogflowResponse_Data_Google struct {
+	ExpectUserResponse bool                                         `json:"expectUserResponse,omitempty"`
+	IsSsml             bool                                         `json:"isSsmp,omitempty"`
+	NoInputPrompts     []interface{}                                `json:"noInputPrompts,omitempty"`
+	SystemIntent       *DialogflowResponse_Data_Google_SystemIntent `json:"systemIntent,omitempty"`
+}
+
+type DialogflowResponse_Data struct {
+	Google *DialogflowResponse_Data_Google `json:"google,omitempty"`
+}
+
 type DialogflowResponse struct {
-	Speech        string `json:"speech"`
-	DisplaySpeech string `json:"displayText"`
-	Data          struct {
-		Google struct {
-			ExpectUserResponse bool          `json:"expect_user_response"`
-			IsSsml             bool          `json:"is_ssml"`
-			NoInputPrompts     []interface{} `json:"no_input_prompts"`
-			SystemIntent       struct {
-				Intent string `json:"intent"`
-				Spec   struct {
-					PermissionValueSpec struct {
-						OptContext  string   `json:"opt_context"`
-						Permissions []string `json:"permissions"`
-					} `json:"permission_value_spec"`
-				} `json:"spec"`
-			} `json:"system_intent"`
-		} `json:"google"`
-	} `json:"data"`
-	ContextOut []struct {
-		Name       string `json:"name"`
-		Lifespan   int    `json:"lifespan"`
+	Speech        string                   `json:"speech,omitempty"`
+	DisplaySpeech string                   `json:"displayText,omitempty"`
+	Data          *DialogflowResponse_Data `json:"data,omitempty"`
+	ContextOut    []struct {
+		Name       string `json:"name,omitempty"`
+		Lifespan   int    `json:"lifespan,omitempty"`
 		Parameters struct {
-		} `json:"parameters"`
-	} `json:"contextOut"`
+		} `json:"parameters,omitempty"`
+	} `json:"contextOut,omitempty"`
 }

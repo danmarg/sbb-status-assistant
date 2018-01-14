@@ -47,9 +47,9 @@ func (l *Localizer) NeedLocation() string {
 
 func (l *Localizer) PermissionContext() string {
 	if l.lang == language.German {
-		return "Um Haltestellen zu suchen."
+		return "Um Haltestellen zu suchen"
 	}
-	return "To look for stations."
+	return "To look for stations"
 }
 
 func (l *Localizer) Stations(near string, stations []Station) string {
@@ -58,9 +58,9 @@ func (l *Localizer) Stations(near string, stations []Station) string {
 		part := s.Name
 		if s.Distance > 0 {
 			if l.lang == language.German {
-				part += fmt.Sprintf(", %d Meter entfernt", s.Distance)
+				part += fmt.Sprintf(", %d Meter entfernt", int(s.Distance))
 			} else {
-				part += fmt.Sprintf(", %d meters away", s.Distance)
+				part += fmt.Sprintf(", %d meters away", int(s.Distance))
 			}
 		}
 		parts = append(parts, part)
@@ -71,15 +71,30 @@ func (l *Localizer) Stations(near string, stations []Station) string {
 		}
 		return fmt.Sprintf("I could not find any matching stations near %s.", near)
 	} else if len(parts) == 1 {
-		if l.lang == language.German {
-			return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s.", near, parts[0])
+		if len(near) > 0 {
+			if l.lang == language.German {
+				return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s.", near, parts[0])
+			}
+			return fmt.Sprintf("The closest station to %s is: %s.", near, parts[0])
+		} else {
+			if l.lang == language.German {
+				return fmt.Sprintf("Die nächste Haltestelle zu Ihnen ist: %s.", parts[0])
+			}
+			return fmt.Sprintf("The closest station to you is: %s.", parts[0])
 		}
-		return fmt.Sprintf("The closest station to %s is: %s.", near, parts[0])
 	}
-	if l.lang == language.German {
-		return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s.", near, strings.Join(parts, "; "))
+	if len(near) > 0 {
+		if l.lang == language.German {
+			return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s.", near, strings.Join(parts, "; "))
+		}
+		return fmt.Sprintf("The closest stations to %s are: %s.", near, strings.Join(parts, "; "))
+	} else {
+		if l.lang == language.German {
+			return fmt.Sprintf("Die nächste Haltestellen zu Ihnen sind: %s.", strings.Join(parts, "; "))
+		}
+		return fmt.Sprintf("The closest stations to you are: %s.", strings.Join(parts, "; "))
+
 	}
-	return fmt.Sprintf("The closest stations to %s are: %s.", near, strings.Join(parts, "; "))
 }
 
 func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {

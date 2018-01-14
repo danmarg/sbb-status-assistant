@@ -99,12 +99,15 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), "%s", x) },
 	}
 
+	log.Infof(appengine.NewContext(req), "Received intent %v", dreq.Result.Metadata.IntentName)
 	switch dreq.Result.Metadata.IntentName {
 	case "next-departure":
-		err = stationboard(svc, dreq, &dresp)
+		fallthrough
 	case "next-departures":
 		err = stationboard(svc, dreq, &dresp)
 	case "find-stations":
+		fallthrough
+	case "find-stations-nearby":
 		err = findStations(svc, dreq, &dresp)
 	default:
 		err = fmt.Errorf("Unknown intent %s", dreq.Result.Metadata.IntentName)
@@ -134,9 +137,11 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	if lreq.Query == "" && !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
 		// Request the user location.
 		dresp.Speech = loc.NeedLocation()
-		dresp.Data.Google.SystemIntent.Intent = "assistant.intent.action.PERMISSION"
-		dresp.Data.Google.SystemIntent.Spec.PermissionValueSpec.OptContext = loc.PermissionContext()
-		dresp.Data.Google.SystemIntent.Spec.PermissionValueSpec.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
+		dresp.Data = &DialogflowResponse_Data{Google: &DialogflowResponse_Data_Google{
+			SystemIntent: &DialogflowResponse_Data_Google_SystemIntent{Intent: "actions.intent.PERMISSION"}}}
+		dresp.Data.Google.SystemIntent.Data.Type = "type.googleapis.com/google.actions.v2.PermissionValueSpec"
+		dresp.Data.Google.SystemIntent.Data.OptContext = loc.PermissionContext()
+		dresp.Data.Google.SystemIntent.Data.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
 		return nil
 	}
 	lresp, err := svc.Locations(lreq)
@@ -150,6 +155,10 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 		limit = int(l)
 	}
 	for _, s := range lresp {
+		if s.Iconclass == "sl-icon-type-adr" {
+			// This seems to mean it's a street address.
+			continue
+		}
 		stats = append(stats, localize.Station{Name: s.Label, Distance: s.Dist})
 		if len(stats) == limit {
 			break
