@@ -24,9 +24,10 @@ REPLACEMENTS = [
 ]
 
 parser = argparse.ArgumentParser()
-parser.add_argument('input')
-parser.add_argument('output')
+parser.add_argument('--input')
+parser.add_argument('--output')
 parser.add_argument('--json', dest='json', type=lambda x:bool(distutils.util.strtobool(x)))
+parser.add_argument('--allowed_bus_operators')
 args = parser.parse_args()
 
 def edit_distance(s1, s2):
@@ -43,11 +44,15 @@ def edit_distance(s1, s2):
 
     return tbl[i,j]
 
+allowed_busses = set(args.allowed_bus_operators.split(','))
+
 entities = {}
 # The CSV has names in column 2 (0-indexed).
 with open(args.input, 'r') as f:
     r = csv.reader(f, delimiter=';')
     for row in r:
+      if allowed_busses and row[6] not in allowed_busses:
+        continue
       entities[row[2]] = set([row[2]])
 
 for entity in entities.keys():

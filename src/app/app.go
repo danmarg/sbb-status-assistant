@@ -235,9 +235,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 				// XXX: Probably should say SOMETHING about them.
 				break
 			}
-
 		}
-
 	} else {
 		// Do a /stationboard RPC.
 		sreq := transport.StationboardRequest{
