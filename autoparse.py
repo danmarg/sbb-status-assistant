@@ -44,7 +44,8 @@ def edit_distance(s1, s2):
 
     return tbl[i,j]
 
-allowed_busses = set(args.allowed_bus_operators.split(','))
+allowed_busses = (set(args.allowed_bus_operators.split(','))
+        if args.allowed_bus_operators else [])
 
 entities = {}
 # The CSV has names in column 2 (0-indexed).

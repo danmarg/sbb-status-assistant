@@ -13,6 +13,7 @@ import (
 	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
 
+	"datastore"
 	"localize"
 	"transport"
 )

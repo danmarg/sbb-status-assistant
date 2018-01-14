@@ -84,6 +84,7 @@ type DialogflowResponse_Data_Google_SystemIntent struct {
 
 type DialogflowResponse_Data_Google struct {
 	ExpectUserResponse bool                                         `json:"expectUserResponse,omitempty"`
+	ExpectedInputs     []*DialogflowResponse_Data_Google            `json:"expectedInputs,omitempty"`
 	IsSsml             bool                                         `json:"isSsmp,omitempty"`
 	NoInputPrompts     []interface{}                                `json:"noInputPrompts,omitempty"`
 	SystemIntent       *DialogflowResponse_Data_Google_SystemIntent `json:"systemIntent,omitempty"`
