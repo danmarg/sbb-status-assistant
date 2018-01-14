@@ -170,6 +170,11 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 		near = dreq.OriginalRequest.Data.Device.Location.FormattedAddress
 	}
 	dresp.Speech = loc.Stations(near, stats)
+	// If no results, leave open the conversation.
+	if len(stats) == 0 {
+		dresp.Data = &DialogflowResponse_Data{
+			Google: &DialogflowResponse_Data_Google{ExpectUserResponse: true}}
+	}
 	return nil
 }
 
@@ -303,6 +308,12 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			break
 		}
 	}
+	// If no results, leave open the conversation.
+	if len(filtered) == 0 {
+		dresp.Data = &DialogflowResponse_Data{
+			Google: &DialogflowResponse_Data_Google{ExpectUserResponse: true}}
+	}
+
 	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered)
 	return nil
 }
