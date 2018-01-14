@@ -13,7 +13,6 @@ import (
 	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
 
-	"datastore"
 	"localize"
 	"transport"
 )
@@ -220,7 +219,8 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 					Mode:     mode(l.Type),
 					Platform: l.SbbName,
 				}
-				if l.DepDelay == "" {
+				// For some reason "delay" is sometimes "X". Is this an unknown delay?
+				if l.DepDelay == "" || l.DepDelay == "X" {
 				} else if del, err := strconv.Atoi(l.DepDelay); err != nil {
 					return err
 				} else {
@@ -256,7 +256,8 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 				Mode:     mode(c.Type),
 				Platform: c.Track,
 			}
-			if c.DepDelay == "" {
+			// For some reason "delay" is sometimes "X". Is this an unknown delay?
+			if c.DepDelay == "" || c.DepDelay == "X" {
 			} else if del, err := strconv.Atoi(c.DepDelay); err != nil {
 				return err
 			} else {
