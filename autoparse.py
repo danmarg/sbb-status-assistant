@@ -52,6 +52,8 @@ entities = {}
 with open(args.input, 'r') as f:
     r = csv.reader(f, delimiter=';')
     for row in r:
+      if row[7] not in ('Haltestelle', 'Haltestelle_und_Bedienpunkt'):
+        continue
       if allowed_busses and row[6] not in allowed_busses:
         continue
       entities[row[2]] = set([row[2]])
