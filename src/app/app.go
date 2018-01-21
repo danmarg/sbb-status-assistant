@@ -155,7 +155,7 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 		limit = int(l)
 	}
 	for _, s := range lresp {
-		if s.Iconclass == "sl-icon-type-adr" {
+		if s.Iconclass == "sl-icon-type-adr" || strings.HasPrefix(s.Iconclass, "sl-icon-tel") {
 			// This seems to mean it's a street address.
 			continue
 		}
