@@ -19,6 +19,7 @@ REPLACEMENTS = [
     (r'ä', 'ae'),
     (r'ä', 'a'),
     (r',', ''),
+    (r'\sHB', ' Hauptbahnhof'),
     (r'[()]', ''),
     (r'\s*\(.*\)\s*', ''),
 ]
