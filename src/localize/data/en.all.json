@@ -1,0 +1,64 @@
+{
+  "bus": {
+    "other": "the {{.Name}} bus"
+  },
+  "closest_near": {
+    "one": "The closest station to {{.Near}} is: {{.Stations}}.",
+    "other": "The closest stations to {{.Near}} are: {{.Stations}}."
+  },
+  "closest_to_you": {
+    "one": "The closest station to you is: {{.Stations}}.",
+    "other": "The closest stations to you are: {{.Stations}}."
+  },
+  "could_not_find_any_routes": {
+    "other": "I could not find any matching routes."
+  },
+  "location_needed": {
+    "other": "I need your location."
+  },
+  "meters_away": {
+    "one": "{{.Name}}, {{.Count}} meter away",
+    "other": "{{.Name}}, {{.Count}} meters away"
+  },
+  "next_departures": {
+    "one": "The next departure from {{.From}} is: {{.Last}}.",
+    "other": "The next {{.Count}} departures from {{.From}} are: {{.Departures}}, and {{.Last}}."
+  },
+  "next_departures_at": {
+    "one": "The next departure leaving {{.From}} from {{.Time}} is: {{.Last}}.",
+    "other": "The next {{.Count}} departures leaving {{.From}} from {{.Time}} are: {{.Departures}}, and {{.Last}}."
+  },
+  "no_nearby_stations": {
+    "other": "I could not find any matching stations."
+  },
+  "no_nearby_stations_near": {
+    "other": "I could not find any matching stations near {{.Near}}."
+  },
+  "ship": {
+    "other": "the {{.Name}} ship"
+  },
+  "the_7_tram_on_time_at_1504_to_farbhof": {
+    "other": "{{.Name}} departing on-time at {{.Time}} to {{.Destination}}"
+  },
+  "the_7_tram_on_time_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} departing on-time from platform {{.Platform}} at {{.Time}} to {{.Destination}}"
+  },
+  "the_7_tram_with_a_5_minute_delay_at_1504_to_farbhof": {
+    "other": "{{.Name}} departing at {{.Time}} with a {{.Delay}}-minute delay to {{.Destination}}"
+  },
+  "the_7_tram_with_a_5_minute_delay_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} departing at {{.Time}} with a {{.Delay}}-minute delay from platform {{.Platform}} to {{.Destination}}"
+  },
+  "to_look_for_stations": {
+    "other": "To look for stations"
+  },
+  "train": {
+    "other": "the {{.Name}} train"
+  },
+  "tram": {
+    "other": "the {{.Name}} tram"
+  },
+  "unknown_mode": {
+    "other": "the {{.Name}}"
+  }
+}

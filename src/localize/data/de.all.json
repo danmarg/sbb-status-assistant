@@ -1,0 +1,64 @@
+{
+  "bus": {
+    "other": "der {{.Name}} Bus"
+  },
+  "closest_near": {
+    "one": "Die nächste Haltestelle zum {{.Near}} ist: {{.Stations}}.",
+    "other": "Die nächste Haltestellen zum {{.Near}} sind: {{.Stations}}."
+  },
+  "closest_to_you": {
+    "one": "Die nächste Haltestelle zu Ihnen ist: {{.Stations}}.",
+    "other": "Die nächste Haltestellen zu Ihnen sind: {{.Stations}}."
+  },
+  "could_not_find_any_routes": {
+    "other": "Ich konnte keine passenden Linien finden."
+  },
+  "location_needed": {
+    "other": "Ich brauche Ihren Standort."
+  },
+  "meters_away": {
+    "one": "{{.Name}}, {{.Count}} Meter entfernt",
+    "other": "{{.Name}}, {{.Count}} Meter entfernt"
+  },
+  "next_departures": {
+    "one": "Die nächste Abfahrt von {{.From}} ist: {{.Last}}.",
+    "other": "Die nächste {{.Count}} Abfarten von {{.From}} sind: {{.Departures}}, und {{.Last}}."
+  },
+  "next_departures_at": {
+    "one": "Die nächste Abfahrt von {{.From}} um {{.Time}} ist: {{.Last}}.",
+    "other": "Die nächste {{.Count}} Abfarten von {{.From}} um {{.Time}} sind: {{.Departures}}, und {{.Last}}."
+  },
+  "no_nearby_stations": {
+    "other": "Ich konnte keine Haltestellen finden."
+  },
+  "no_nearby_stations_near": {
+    "other": "Ich konnte keine Haltestellen in der Nähe von {{.Near}} finden."
+  },
+  "ship": {
+    "other": "das {{.Name}} Shiff"
+  },
+  "the_7_tram_on_time_at_1504_to_farbhof": {
+    "other": "{{.Name}} pünktlich abfahren nach {{.Destination}} um {{.Time}}"
+  },
+  "the_7_tram_on_time_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} pünktlich abfahren von Gleis {{.Platform}} nach {{.Destination}} um {{.Time}}"
+  },
+  "the_7_tram_with_a_5_minute_delay_at_1504_to_farbhof": {
+    "other": "{{.Name}} abfahren mit einer {{.Delay}} Minuten Verspätung nach {{.Destination}} um {{.Time}}"
+  },
+  "the_7_tram_with_a_5_minute_delay_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} abfahren von Gleis {{.Platform}} mit einer {{.Delay}} Minuten Verspätung nach {{.Destination}} um {{.Time}}"
+  },
+  "to_look_for_stations": {
+    "other": "Um Haltestellen zu suchen"
+  },
+  "train": {
+    "other": "der {{.Name}} Zug"
+  },
+  "tram": {
+    "other": "die {{.Name}} Tram"
+  },
+  "unknown_mode": {
+    "other": "der {{.Name}}"
+  }
+}

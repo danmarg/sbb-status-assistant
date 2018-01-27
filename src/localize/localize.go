@@ -1,16 +1,21 @@
 package localize
 
 import (
-	"fmt"
+	"io/ioutil"
+	"path"
 	"strings"
 	"time"
 
+	"github.com/nicksnyder/go-i18n/i18n"
 	"golang.org/x/text/language"
 )
+
+const dataDir = "./data"
 
 type Localizer struct {
 	lang language.Tag
 	tz   *time.Location
+	t    i18n.TranslateFunc
 }
 
 var matcher = language.NewMatcher([]language.Tag{
@@ -18,9 +23,24 @@ var matcher = language.NewMatcher([]language.Tag{
 	language.German,
 })
 
+func init() {
+	files, err := ioutil.ReadDir(dataDir)
+	if err != nil {
+		panic(err)
+	}
+	for _, f := range files {
+		if strings.HasSuffix(f.Name(), ".all.json") {
+			i18n.MustLoadTranslationFile(path.Join(dataDir, f.Name()))
+		}
+	}
+}
+
 func NewLocalizer(lang string, timezone *time.Location) Localizer {
 	tag, _ := language.MatchStrings(matcher, lang)
-	return Localizer{tag, timezone}
+	// Use the tag to avoid https://github.com/nicksnyder/go-i18n/issues/76.
+	b, _ := tag.Base()
+	t := i18n.MustTfunc(b.String())
+	return Localizer{tag, timezone, t}
 }
 
 type Station struct {
@@ -39,153 +59,100 @@ type Departure struct {
 }
 
 func (l *Localizer) NeedLocation() string {
-	if l.lang == language.German {
-		return "Ich brauche Ihren Standort."
-	}
-	return "I need your location."
+	return l.t("location_needed")
 }
 
 func (l *Localizer) PermissionContext() string {
-	if l.lang == language.German {
-		return "Um Haltestellen zu suchen"
-	}
-	return "To look for stations"
+	return l.t("to_look_for_stations")
 }
 
 func (l *Localizer) Stations(near string, stations []Station) string {
 	parts := []string{}
 	for _, s := range stations {
-		part := s.Name
-		if s.Distance > 0 {
-			if l.lang == language.German {
-				part += fmt.Sprintf(", %d Meter entfernt", int(s.Distance))
-			} else {
-				part += fmt.Sprintf(", %d meters away", int(s.Distance))
-			}
-		}
-		parts = append(parts, part)
+		parts = append(parts, l.t("meters_away", int(s.Distance), map[string]interface{}{"Name": s.Name}))
 	}
 	if len(parts) == 0 {
-		if l.lang == language.German {
-			return fmt.Sprintf("Ich konnte keine Haltestellen in der Nähe von %s finden.", near)
-		}
-		return fmt.Sprintf("I could not find any matching stations near %s.", near)
-	} else if len(parts) == 1 {
 		if len(near) > 0 {
-			if l.lang == language.German {
-				return fmt.Sprintf("Die nächste Haltestelle zum %s ist: %s.", near, parts[0])
-			}
-			return fmt.Sprintf("The closest station to %s is: %s.", near, parts[0])
-		} else {
-			if l.lang == language.German {
-				return fmt.Sprintf("Die nächste Haltestelle zu Ihnen ist: %s.", parts[0])
-			}
-			return fmt.Sprintf("The closest station to you is: %s.", parts[0])
+			return l.t("no_nearby_stations_near", map[string]interface{}{"Near": near})
 		}
+		return l.t("no_nearby_stations")
 	}
+	// XXX: This string join is bad i18n, but it works.
 	if len(near) > 0 {
-		if l.lang == language.German {
-			return fmt.Sprintf("Die nächste Haltestellen zum %s sind: %s.", near, strings.Join(parts, "; "))
-		}
-		return fmt.Sprintf("The closest stations to %s are: %s.", near, strings.Join(parts, "; "))
-	} else {
-		if l.lang == language.German {
-			return fmt.Sprintf("Die nächste Haltestellen zu Ihnen sind: %s.", strings.Join(parts, "; "))
-		}
-		return fmt.Sprintf("The closest stations to you are: %s.", strings.Join(parts, "; "))
-
+		return l.t("closest_near", len(parts), map[string]interface{}{"Near": near, "Stations": strings.Join(parts, "; ")})
 	}
+	return l.t("closest_to_you", len(parts), map[string]interface{}{"Stations": strings.Join(parts, "; ")})
 }
 
 func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {
 	parts := []string{}
 	for _, d := range deps {
 		// "the 7 tram departing on-time at 15:04 to Farbhof"
-		var part string
-		var mode string
-		if l.lang == language.German {
-			switch d.Mode {
-			case "bus":
-				part += "der "
-				mode = "Bus"
-			case "tram":
-				part += "die "
-				mode = "Tram"
-			case "train":
-				part += "der "
-				mode = "Zug"
-			case "ship":
-				part += "das "
-				mode = "Shiff"
-			default:
-				part += "das "
-				mode = d.Mode
-			}
-		} else {
-			part += "the "
-			mode = d.Mode
-		}
-		part += fmt.Sprintf("%s %s ", d.Name, mode)
+		// d.Name, d.Mode, d.MinutesDelay, d.Departing, d.MinutesDelay, d.To
 		tm := d.Departing.In(l.tz).Format("15:04")
-		if l.lang == language.German {
+		var name string
+		switch d.Mode {
+		case "bus":
+			name = l.t("bus", map[string]interface{}{"Name": d.Name})
+		case "tram":
+			name = l.t("tram", map[string]interface{}{"Name": d.Name})
+		case "train":
+			name = l.t("train", map[string]interface{}{"Name": d.Name})
+		case "ship":
+			name = l.t("ship", map[string]interface{}{"Name": d.Name})
+		default:
+			name = l.t("unknown_mode", map[string]interface{}{"Name": d.Name})
+		}
+		if d.Platform == "" {
 			if d.MinutesDelay < 1 {
-				part += "pünktlich abfahren "
+				parts = append(parts, l.t("the_7_tram_on_time_at_1504_to_farbhof", map[string]interface{}{
+					"Name":        name,
+					"Time":        tm,
+					"Destination": d.To,
+				}))
 			} else {
-				part += fmt.Sprintf("abfahren mit einer %d Minuten Verspätung ", d.MinutesDelay)
+				parts = append(parts, l.t("the_7_tram_with_a_5_minute_delay_at_1504_to_farbhof", map[string]interface{}{
+					"Name":        name,
+					"Time":        tm,
+					"Destination": d.To,
+					"Delay":       d.MinutesDelay,
+				}))
 			}
-			if d.Platform != "" {
-				part += fmt.Sprintf("von Gleis %s ", d.Platform)
-			}
-			part += fmt.Sprintf("nach %s um %s", d.To, tm)
 		} else {
 			if d.MinutesDelay < 1 {
-				part += "departing on-time "
+				parts = append(parts, l.t("the_7_tram_on_time_from_platform_2_at_1504_to_farbhof", map[string]interface{}{
+					"Name":        name,
+					"Time":        tm,
+					"Destination": d.To,
+					"Platform":    d.Platform,
+				}))
 			} else {
-				part += fmt.Sprintf("departing with a %d minute delay ", d.MinutesDelay)
+				parts = append(parts, l.t("the_7_tram_with_a_5_minute_delay_from_platform_2_at_1504_to_farbhof", map[string]interface{}{
+					"Name":        name,
+					"Time":        tm,
+					"Destination": d.To,
+					"Delay":       d.MinutesDelay,
+					"Platform":    d.Platform,
+				}))
 			}
-			if d.Platform != "" {
-				part += fmt.Sprintf("from platform %s ", d.Platform)
-			}
-
-			part += fmt.Sprintf("to %s at %s", d.To, tm)
 		}
-		parts = append(parts, part)
 	}
 
 	if len(parts) == 0 {
-		if l.lang == language.German {
-			return "Ich konnte keine passenden Haltestellen oder Linien finden."
-		}
-		return "I could not find any matching stations or routes."
-	} else if len(parts) == 1 {
-		if l.lang == language.German {
-			return fmt.Sprintf("Die nächste Abfahrt von %s ist %s.", from, parts[0])
-		} else {
-			return fmt.Sprintf("The next departure from %s is %s.", from, parts[0])
-		}
+		return l.t("could_not_find_any_routes")
 	}
-	var result string
+
 	if startTime.IsZero() {
-		if l.lang == language.German {
-			result = fmt.Sprintf("Die nächsten %d Abfahrten von %s sind: ", len(parts), from)
-		} else {
-			result = fmt.Sprintf("The next %d departures from %s are: ", len(parts), from)
-		}
-	} else {
-		st := startTime.In(l.tz).Format("15:04")
-		if l.lang == language.German {
-			result = fmt.Sprintf("Die nächsten %d Abfahrten ab %s von %s sind: ", len(parts), st, from)
-		} else {
-			result = fmt.Sprintf("The next %d departures leaving %s from %s are: ", len(parts), from, st)
-		}
-
+		return l.t("next_departures", len(parts), map[string]interface{}{
+			"From":       from,
+			"Departures": strings.Join(parts[:len(parts)-1], "; "),
+			"Last":       parts[len(parts)-1],
+		})
 	}
-
-	result += strings.Join(parts[:len(parts)-1], "; ")
-	if l.lang == language.German {
-		result += " und "
-	} else {
-		result += " and "
-	}
-	return result + parts[len(parts)-1] + "."
+	return l.t("next_departures_at", len(parts), map[string]interface{}{
+		"From":       from,
+		"Departures": strings.Join(parts[:len(parts)-1], "; "),
+		"Last":       parts[len(parts)-1],
+		"Time":       startTime.In(l.tz).Format("15:04"),
+	})
 }
