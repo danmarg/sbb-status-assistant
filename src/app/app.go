@@ -19,7 +19,7 @@ import (
 
 var (
 	timezone *time.Location
-	stations entityMap
+	//stations entityMap
 )
 
 func init() {
@@ -28,10 +28,10 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	stations, err = loadEntities()
-	if err != nil {
-		panic(err)
-	}
+	//stations, err = loadEntities()
+	//if err != nil {
+	//	panic(err)
+	//}
 	http.HandleFunc("/dialogflow", dialogflow)
 }
 
@@ -179,10 +179,11 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 }
 
 func normalizeStation(s string) string {
-	if n, ok := stations[strings.ToLower(s)]; ok {
+	return s
+	/*if n, ok := stations[strings.ToLower(s)]; ok {
 		return n
 	}
-	return s
+	return s*/
 }
 
 func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
