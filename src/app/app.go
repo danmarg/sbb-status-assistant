@@ -34,18 +34,15 @@ func init() {
 func tryParseStupidDate(raw string) time.Time {
 	var result time.Time
 	var err error
-	if result, err = time.Parse("15:04:05", raw); err != nil {
-		if result, err = time.Parse("2006-01-02T15:04:05Z", raw); err != nil {
+	if result, err = time.ParseInLocation("15:04:05", raw, timezone); err != nil {
+		if result, err = time.ParseInLocation("2006-01-02T15:04:05Z", raw, timezone); err != nil {
 			result = time.Time{}
 		}
 	} else {
 		// Successfully parsed as HH:MM:SS, so we assume it's today.
 		// XXX: This will be dumb around midnight, I guess. Remember to email the Dialogflow folks about how this is silly.
 		now := time.Now()
-		result = time.Date(now.Year(), now.Month(), now.Day(), result.Hour(), result.Minute(), result.Second(), 0, now.Location())
-	}
-	if !result.IsZero() { // Make sure it's Swiss time or something.
-		result = result.In(timezone)
+		result = time.Date(now.Year(), now.Month(), now.Day(), result.Hour(), result.Minute(), result.Second(), 0, timezone)
 	}
 	return result
 }
