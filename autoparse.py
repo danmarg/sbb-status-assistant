@@ -19,7 +19,10 @@ REPLACEMENTS = [
     (r'ä', 'ae'),
     (r'ä', 'a'),
     (r',', ''),
-    (r'\sHB', ' Hauptbahnhof'),
+    (r',?\sHB', ' Hauptbahnhof'),
+    (r',?\sHB', ''),
+    (r',?\sHauptbahnhof', ' HB'),
+    (r',?\sHauptbahnhof', ''),
     (r'[()]', ''),
     (r'\s*\(.*\)\s*', ''),
 ]
@@ -80,6 +83,8 @@ reverse = {}  # Alternate values for entities, to try to ensure uniqueness.
 for entity, alternates in entities.items():
     alternates = copy.copy(alternates)
     for alt in alternates:
+        if alt == "":
+            continue
         if alt in reverse:
             print('Found conflicting alternate',alt,'maps to',entity,'and',reverse[alt])
             # Prefer the version with lower edit distance from the original.
