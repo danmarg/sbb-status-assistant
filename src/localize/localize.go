@@ -84,7 +84,7 @@ func (l *Localizer) Stations(near string, stations []Station) string {
 	return l.t("closest_to_you", len(parts), map[string]interface{}{"Stations": strings.Join(parts, "; ")})
 }
 
-func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Departure) string {
+func (l *Localizer) NextDepartures(from, to string, startTime time.Time, deps []Departure) string {
 	parts := []string{}
 	for _, d := range deps {
 		// "the 7 tram departing on-time at 15:04 to Farbhof"
@@ -142,17 +142,33 @@ func (l *Localizer) NextDepartures(from string, startTime time.Time, deps []Depa
 		return l.t("could_not_find_any_routes")
 	}
 
-	if startTime.IsZero() {
+	if startTime.IsZero() && to == "" {
 		return l.t("next_departures", len(parts), map[string]interface{}{
 			"From":       from,
 			"Departures": strings.Join(parts[:len(parts)-1], "; "),
 			"Last":       parts[len(parts)-1],
 		})
+	} else if startTime.IsZero() && to != "" {
+		return l.t("next_departures_to", len(parts), map[string]interface{}{
+			"From":       from,
+			"To":         to,
+			"Departures": strings.Join(parts[:len(parts)-1], "; "),
+			"Last":       parts[len(parts)-1],
+		})
+	} else if !startTime.IsZero() && to == "" {
+		return l.t("next_departures_at", len(parts), map[string]interface{}{
+			"From":       from,
+			"Departures": strings.Join(parts[:len(parts)-1], "; "),
+			"Last":       parts[len(parts)-1],
+			"Time":       startTime.In(l.tz).Format("15:04"),
+		})
+	} else /* !startTime.IsZero() && to != "" */ {
+		return l.t("next_departures_to_at", len(parts), map[string]interface{}{
+			"From":       from,
+			"To":         to,
+			"Departures": strings.Join(parts[:len(parts)-1], "; "),
+			"Last":       parts[len(parts)-1],
+			"Time":       startTime.In(l.tz).Format("15:04"),
+		})
 	}
-	return l.t("next_departures_at", len(parts), map[string]interface{}{
-		"From":       from,
-		"Departures": strings.Join(parts[:len(parts)-1], "; "),
-		"Last":       parts[len(parts)-1],
-		"Time":       startTime.In(l.tz).Format("15:04"),
-	})
 }

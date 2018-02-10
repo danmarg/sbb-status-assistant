@@ -183,7 +183,6 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 
 	if dreq.Result.Parameters.Destination != "" {
 		// Do a /connections RPC.
-
 		creq := transport.ConnectionsRequest{
 			Station:     dreq.Result.Parameters.Source,
 			Destination: dreq.Result.Parameters.Destination,
@@ -302,6 +301,6 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			Google: &DialogflowResponse_Data_Google{ExpectUserResponse: true}}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, startTime, filtered)
+	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, dreq.Result.Parameters.Destination, startTime, filtered)
 	return nil
 }

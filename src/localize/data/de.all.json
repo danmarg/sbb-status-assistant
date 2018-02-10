@@ -28,6 +28,15 @@
     "one": "Die nächste Abfahrt von {{.From}} um {{.Time}} ist: {{.Last}}.",
     "other": "Die nächste {{.Count}} Abfarten von {{.From}} um {{.Time}} sind: {{.Departures}}, und {{.Last}}."
   },
+  "next_departures_to": {
+    "one": "Die nächste Abfahrt von {{.From}} nach {{.To}} ist: {{.Last}}.",
+    "other": "Die nächste {{.Count}} Abfarten von {{.From}} nach {{.To}} sind: {{.Departures}}, und {{.Last}}."
+  },
+  "next_departures_to_at": {
+    "one": "Die nächste Abfahrt von {{.From}} nach {{.To}} um {{.Time}} ist: {{.Last}}.",
+    "other": "Die nächste {{.Count}} Abfarten von {{.From}} nach {{.To}} um {{.Time}} sind: {{.Departures}}, und {{.Last}}."
+  },
+
   "no_nearby_stations": {
     "other": "Ich konnte keine Haltestellen finden."
   },
