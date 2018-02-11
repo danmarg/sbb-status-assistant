@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# Parses data from https://data.sbb.ch/explore/ into proper Dialogflow
-# entities.
+# Parses data from https://data.sbb.ch/explore/dataset/station-didok/export/
+# into proper Dialogflow entities.
 import argparse
 import copy
 import collections
