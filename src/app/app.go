@@ -121,12 +121,11 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 
 func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
 	lreq := transport.LocationsRequest{
-		Query: dreq.Result.Parameters.Query,
-		Lat:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
-		Lon:   dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
+		Lat: dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
+		Lon: dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
 	}
 	loc := localize.NewLocalizer(dreq.Lang, timezone)
-	if lreq.Query == "" && !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
+	if !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
 		// Request the user location.
 		dresp.Speech = loc.NeedLocation()
 		dresp.Data = &DialogflowResponse_Data{Google: &DialogflowResponse_Data_Google{
@@ -156,12 +155,7 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			break
 		}
 	}
-	near := dreq.Result.Parameters.Query
-	if near == "" {
-		// Use device location.
-		near = dreq.OriginalRequest.Data.Device.Location.FormattedAddress
-	}
-	dresp.Speech = loc.Stations(near, stats)
+	dresp.Speech = loc.Stations(dreq.OriginalRequest.Data.Device.Location.FormattedAddress, stats)
 	// If no results, leave open the conversation.
 	if len(stats) == 0 {
 		dresp.Data = &DialogflowResponse_Data{
