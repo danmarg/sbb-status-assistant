@@ -32,6 +32,8 @@ parser.add_argument('--input')
 parser.add_argument('--output')
 parser.add_argument('--json', dest='json', type=lambda x:bool(distutils.util.strtobool(x)))
 parser.add_argument('--allowed_bus_operators')
+parser.add_argument('--no_busses_except_for')
+# Good default arg for the above is "Zürich,Basel,Bern,Luzern,Winterthur,Locarno,Lugano,Genèv,Laus,Gallen,Biel,Thun,Fribo,Köniz,Chaux,Schaffha,Vernier,Chur,Neuch,Uster"
 args = parser.parse_args()
 
 def edit_distance(s1, s2):
@@ -50,6 +52,8 @@ def edit_distance(s1, s2):
 
 allowed_busses = (set(args.allowed_bus_operators.split(','))
         if args.allowed_bus_operators else [])
+no_busses_except_for = (set(args.no_busses_except_for.split(','))
+        if args.no_busses_except_for else [])
 
 entities = {}
 # The CSV has names in column 2 (0-indexed).
@@ -60,6 +64,10 @@ with open(args.input, 'r') as f:
         continue
       if allowed_busses and row[6] not in allowed_busses:
         continue
+      # Filter on modes of transport, except for whitelisted cities.
+      if no_busses_except_for and 'Zug' not in row[8]:
+        if not [a for a in no_busses_except_for if a in row[2]]:
+          continue
       entities[row[2]] = set([row[2]])
 
 for entity in entities.keys():
