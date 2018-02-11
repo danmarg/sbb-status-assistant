@@ -92,14 +92,19 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Infof(appengine.NewContext(req), "Received intent %v", dreq.Result.Metadata.IntentName)
+	log.Infof(appengine.NewContext(req), "RAW:\n %v", string(bs))
 	switch dreq.Result.Metadata.IntentName {
 	case "next-departure":
 		fallthrough
 	case "next-departures":
+		fallthrough
+	case "from-here-to":
+		fallthrough
+	case "from-here-to-with-permission":
 		err = stationboard(svc, dreq, &dresp)
 	case "find-stations":
 		fallthrough
-	case "find-stations-nearby":
+	case "find-stations-with-permission":
 		err = findStations(svc, dreq, &dresp)
 	default:
 		err = fmt.Errorf("Unknown intent %s", dreq.Result.Metadata.IntentName)
@@ -119,32 +124,8 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
-	lreq := transport.LocationsRequest{
-		Lat: dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
-		Lon: dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
-	}
-	loc := localize.NewLocalizer(dreq.Lang, timezone)
-	if !(lreq.Lat != 0.0 && lreq.Lon != 0.0) {
-		// Request the user location.
-		dresp.Speech = loc.NeedLocation()
-		dresp.Data = &DialogflowResponse_Data{Google: &DialogflowResponse_Data_Google{
-			SystemIntent: &DialogflowResponse_Data_Google_SystemIntent{Intent: "actions.intent.PERMISSION"}}}
-		dresp.Data.Google.SystemIntent.Data.Type = "type.googleapis.com/google.actions.v2.PermissionValueSpec"
-		dresp.Data.Google.SystemIntent.Data.OptContext = loc.PermissionContext()
-		dresp.Data.Google.SystemIntent.Data.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
-		return nil
-	}
-	lresp, err := svc.Locations(lreq)
-	if err != nil {
-		return fmt.Errorf("Error calling Opendata: %v", err)
-	}
-
+func filterStationsResponse(lresp transport.LocationsResponse, limit int) []localize.Station {
 	stats := []localize.Station{}
-	limit := 3
-	if l, _ := dreq.Result.Parameters.Limit.Int64(); l > 0 {
-		limit = int(l)
-	}
 	for _, s := range lresp {
 		if s.Iconclass == "sl-icon-type-adr" || strings.HasPrefix(s.Iconclass, "sl-icon-tel") {
 			// This seems to mean it's a street address.
@@ -155,6 +136,37 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			break
 		}
 	}
+	return stats
+}
+
+func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
+	loc := localize.NewLocalizer(dreq.Lang, timezone)
+	if !(dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude != 0.0 &&
+		dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude != 0.0) {
+		// Request the user location.
+		dresp.Speech = loc.NeedLocation()
+		dresp.Data = &DialogflowResponse_Data{Google: &DialogflowResponse_Data_Google{
+			SystemIntent: &DialogflowResponse_Data_Google_SystemIntent{Intent: "actions.intent.PERMISSION"}}}
+		dresp.Data.Google.SystemIntent.Data.Type = "type.googleapis.com/google.actions.v2.PermissionValueSpec"
+		dresp.Data.Google.SystemIntent.Data.OptContext = loc.PermissionContext()
+		dresp.Data.Google.SystemIntent.Data.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
+		return nil
+	}
+	lreq := transport.LocationsRequest{
+		Lat: dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
+		Lon: dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
+	}
+
+	lresp, err := svc.Locations(lreq)
+	if err != nil {
+		return fmt.Errorf("Error calling Opendata: %v", err)
+	}
+
+	limit := 3
+	if l, _ := dreq.Result.Parameters.Limit.Int64(); l > 0 {
+		limit = int(l)
+	}
+	stats := filterStationsResponse(lresp, limit)
 	dresp.Speech = loc.Stations(dreq.OriginalRequest.Data.Device.Location.FormattedAddress, stats)
 	// If no results, leave open the conversation.
 	if len(stats) == 0 {
@@ -165,6 +177,49 @@ func findStations(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 }
 
 func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *DialogflowResponse) error {
+	loc := localize.NewLocalizer(dreq.Lang, timezone)
+	if dreq.Result.Parameters.Source == "" &&
+		!(dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude != 0.0 &&
+			dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude != 0.0) {
+		svc.Logger("Requesting user location...")
+		// Request the user location.
+		dresp.Speech = loc.NeedLocation()
+		dresp.Data = &DialogflowResponse_Data{Google: &DialogflowResponse_Data_Google{
+			SystemIntent: &DialogflowResponse_Data_Google_SystemIntent{Intent: "actions.intent.PERMISSION"}}}
+		dresp.Data.Google.SystemIntent.Data.Type = "type.googleapis.com/google.actions.v2.PermissionValueSpec"
+		dresp.Data.Google.SystemIntent.Data.OptContext = loc.PermissionContext()
+		dresp.Data.Google.SystemIntent.Data.Permissions = []string{"DEVICE_PRECISE_LOCATION"}
+		return nil
+	}
+	var source string
+	if dreq.Result.Parameters.Source != "" {
+		source = dreq.Result.Parameters.Source
+	} else if dreq.OriginalRequest.Data.Device.Location.FormattedAddress != "" {
+		// If the location formatted address is given, we can use it directly.
+		source = dreq.OriginalRequest.Data.Device.Location.FormattedAddress
+	} else {
+		// Sometimes we get coordinates but not a formatted address. I
+		// don't know why. Let's look up the nearest statioan, since
+		// the Transport API does not take coordinates for starting
+		// locations. This is inefficient unfortunately.
+		lreq := transport.LocationsRequest{
+			Lat: dreq.OriginalRequest.Data.Device.Location.Coordinates.Latitude,
+			Lon: dreq.OriginalRequest.Data.Device.Location.Coordinates.Longitude,
+		}
+		lresp, err := svc.Locations(lreq)
+		if err != nil {
+			return fmt.Errorf("Error calling Opendata: %v", err)
+		}
+		stats := filterStationsResponse(lresp, 1)
+		if len(stats) == 0 {
+			// Now we really have no source to start from.
+			dresp.Data = &DialogflowResponse_Data{
+				Google: &DialogflowResponse_Data_Google{ExpectUserResponse: true}}
+			dresp.Speech = loc.Stations(dreq.OriginalRequest.Data.Device.Location.FormattedAddress, stats)
+			return nil
+		}
+		source = stats[0].Name
+	}
 	// XXX: Dialogflow gives us *either* 15:04:05 OR 2006-01-02T15:04:05Z. I don't know why.
 	startTime := tryParseStupidDate(dreq.Result.Parameters.DateTime)
 
@@ -175,7 +230,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	if dreq.Result.Parameters.Destination != "" {
 		// Do a /connections RPC.
 		creq := transport.ConnectionsRequest{
-			Station:     dreq.Result.Parameters.Source,
+			Station:     source,
 			Destination: dreq.Result.Parameters.Destination,
 			Datetime:    startTime,
 		}
@@ -218,7 +273,7 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 	} else {
 		// Do a /stationboard RPC.
 		sreq := transport.StationboardRequest{
-			Station:  dreq.Result.Parameters.Source,
+			Station:  source,
 			Mode:     transport.DEPARTURE, // XXX: Hardcoded for now
 			Datetime: startTime,
 		}
@@ -249,7 +304,6 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			departures = append(departures, d)
 		}
 	}
-	loc := localize.NewLocalizer(dreq.Lang, timezone)
 	limit := 5 // Default
 	if i, err := dreq.Result.Parameters.Limit.Int64(); err == nil {
 		limit = int(i)
@@ -292,6 +346,6 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			Google: &DialogflowResponse_Data_Google{ExpectUserResponse: true}}
 	}
 
-	dresp.Speech = loc.NextDepartures(dreq.Result.Parameters.Source, dreq.Result.Parameters.Destination, startTime, filtered)
+	dresp.Speech = loc.NextDepartures(source, dreq.Result.Parameters.Destination, startTime, filtered)
 	return nil
 }
