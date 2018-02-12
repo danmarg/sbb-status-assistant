@@ -242,7 +242,8 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 			// Find the first non-walking departure leg.
 			for _, l := range c.Legs {
 				// XXX: Probably should warn people if they have to walk somewhere first.
-				if l.Type == "walk" {
+				// XXX: Not sure what "" type is, but it seems like the last entry sometimes?
+				if l.Type == "walk" || l.Type == "" {
 					continue
 				}
 				d := localize.Departure{

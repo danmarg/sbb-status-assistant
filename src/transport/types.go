@@ -76,16 +76,16 @@ type ConnectionsRequest struct {
 }
 
 type ConnectionsResponse struct {
-	Count       int `json:"count"`
-	Rawtime     int `json:"rawtime"`
-	Maxtime     int `json:"maxtime"`
+	Count       int         `json:"count"`
+	Rawtime     json.Number `json:"rawtime"`
+	Maxtime     json.Number `json:"maxtime"`
 	Connections []struct {
-		From      string `json:"from"`
-		Departure string `json:"departure"`
-		DepDelay  string `json:"dep_delay,omitempty"`
-		To        string `json:"to"`
-		Arrival   string `json:"arrival"`
-		Duration  int    `json:"duration"`
+		From      string      `json:"from"`
+		Departure string      `json:"departure"`
+		DepDelay  string      `json:"dep_delay,omitempty"`
+		To        string      `json:"to"`
+		Arrival   string      `json:"arrival"`
+		Duration  json.Number `json:"duration"`
 		Legs      []struct {
 			Departure string      `json:"departure,omitempty"`
 			Tripid    string      `json:"tripid,omitempty"`
@@ -112,7 +112,7 @@ type ConnectionsResponse struct {
 				X         json.Number `json:"x"`
 				Y         json.Number `json:"y"`
 			} `json:"stops,omitempty"`
-			Runningtime int `json:"runningtime,omitempty"`
+			Runningtime json.Number `json:"runningtime,omitempty"`
 			Exit        struct {
 				Arrival  string      `json:"arrival"`
 				Stopid   string      `json:"stopid"`
