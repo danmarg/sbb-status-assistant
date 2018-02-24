@@ -1,0 +1,73 @@
+{
+  "bus": {
+    "other": "the bus {{.Name}}"
+  },
+  "closest_near": {
+    "one": "L'arrêt le plus proche de {{.Near}} est {{.Stations}}.",
+    "other": "L'arrêt le plus proche de {{.Near}} est {{.Stations}}."
+  },
+  "closest_to_you": {
+    "one": "L'arrêt le plus proche est : {{.Stations}}.",
+    "other": "L'arrêt le plus proche est : {{.Stations}}."
+  },
+  "could_not_find_any_routes": {
+    "other": "Aucun ininéraire n'a été trouvé."
+  },
+  "location_needed": {
+    "other": "J'ai besoin de votre position."
+  },
+  "meters_away": {
+    "one": "{{.Name}}, à {{.Count}} mètre",
+    "other": "{{.Name}}, à {{.Count}} mètres"
+  },
+  "next_departures": {
+    "one": "Prochain départ de {{.From}} : {{.Last}}.",
+    "other": "{{.Count}} prochains départs {{.From}} : {{.Departures}}, et {{.Last}}."
+  },
+  "next_departures_at": {
+    "one": "Prochain départ de {{.From}} à {{.Time}} : {{.Last}}.",
+    "other": "{{.Count}} prochains départs de {{.From}} à {{.Time}} : {{.Departures}}, et {{.Last}}."
+  },
+  "next_departures_to": {
+    "one": "Prochain départ de {{.From}} à destination de {{.To}} : {{.Last}}.",
+    "other": "{{.Count}} prochains départs de {{.From}} à destination de {{.To}} : {{.Departures}}, et {{.Last}}."
+  },
+  "next_departures_to_at": {
+    "one": "Prochain départ de {{.From}} vers {{.To}}, départ à {{.Time}} : {{.Last}}.",
+    "other": "{{.Count}} prochains départs de {{.From}} à destination de {{.To}}, départ à {{.Time}} : {{.Departures}}, et {{.Last}}."
+  },
+
+  "no_nearby_stations": {
+    "other": "Aucun arrêt trouvé."
+  },
+  "no_nearby_stations_near": {
+    "other": "Aucun arrêt trouvé près de {{.Near}}."
+  },
+  "ship": {
+    "other": "le bateau {{.Name}}"
+  },
+  "the_7_tram_on_time_at_1504_to_farbhof": {
+    "other": "{{.Name}} à destination de {{.Destination}} part à l'heure à {{.Time}}"
+  },
+  "the_7_tram_on_time_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} à destination de {{.Destination}} part à l'heure à {{.Time}} du quai {{.Platform}}"
+  },
+  "the_7_tram_with_a_5_minute_delay_at_1504_to_farbhof": {
+    "other": "{{.Name}} à destination de {{.Destination}}, départ à {{.Time}}, a un retard de {{.Delay}} minutes"
+  },
+  "the_7_tram_with_a_5_minute_delay_from_platform_2_at_1504_to_farbhof": {
+    "other": "{{.Name}} à destination de {{.Destination}}, départ à {{.Time}}, quai {{.Platform}} a un retard de {{.Delay}} minutes"
+  },
+  "to_look_for_stations": {
+    "other": "Recherche les arrêts"
+  },
+  "train": {
+    "other": "le train {{.Name}}"
+  },
+  "tram": {
+    "other": "le tram {{.Name}}"
+  },
+  "unknown_mode": {
+    "other": "le {{.Name}}"
+  }
+}

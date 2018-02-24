@@ -1,0 +1,28 @@
+POLICE DE CONFIDENTIALITE DE L'ACTION DE l'ASSISTANT "SWISS TRANSIT"
+
+L'action de l'Assistant "Transport en commun suisse" transmet les données
+suivantes lorsque vous utilisez l'action :
+
+* Texte de la demande: Ce que vous avez entré dans l'action (par exemple,
+"Quels sont les prochains trains partant de Zurich")
+* Metadonnées de la demande : Heure de la demande
+
+Nous n'avons pas accès à des données qui pourraient vous identifier tel que
+l'adresse IP, l'adresse email, ou le nom.
+
+Les données collectées ne sont utilisées que pour améliorer le service ;
+en particulier, les demandes sont utilisées pour améliorer l'analyseur et
+les sources de données (ie, arrêt CFF, routes, etc).
+
+Les données de transit en direct des CFF sont fournit par l'API disponible sur
+https://transport.opendata.ch. Opendata.ch ne propose pas de police de
+confidentialité, cependant, leur source de données est Search.ch, dont les
+termes d'utilisation de l'API sont disponible ici :
+https://timetable.search.ch/api/terms. Opendata.ch et Search.ch n'ont accès
+qu'à une partie des données décrites ci-dessus ; en particulier, les paramètres
+de demandes (arrêts recherchés, destinations, routes, et heure), mais pas les
+textes brut des demandes.
+
+Enfin, l'intégration de Google Assistant est, bien sûr, fournit par Google,
+dont les polices de confidentialité est disponible ici : 
+https://www.google.com/policies/privacy/.
