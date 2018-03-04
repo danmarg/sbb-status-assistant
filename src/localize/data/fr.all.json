@@ -1,6 +1,6 @@
 {
   "bus": {
-    "other": "the bus {{.Name}}"
+    "other": "le bus {{.Name}}"
   },
   "closest_near": {
     "one": "L'arrêt le plus proche de {{.Near}} est {{.Stations}}.",
