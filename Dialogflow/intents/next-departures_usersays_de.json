@@ -1,0 +1,2130 @@
+[
+  {
+    "id": "36eff2fa-5f08-455e-811a-cfe059cdb2ae",
+    "data": [
+      {
+        "text": "welche ",
+        "userDefined": false
+      },
+      {
+        "text": "Züge",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " fahren ab ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich Hauptbahnhof",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "acb43658-b281-4e9f-bc94-b29248412c40",
+    "data": [
+      {
+        "text": "Zürich Hauptbahnhof",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " am Montagmittag",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "38400f42-3bde-4831-b72f-457a27801d84",
+    "data": [
+      {
+        "text": "ok Google von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich Riedbach",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Liestal Stadion",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3018e615-3323-4510-96e3-abc2bdc07368",
+    "data": [
+      {
+        "text": "Steinen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "53d3abe1-e916-49aa-9252-db70d6e4d589",
+    "data": [
+      {
+        "text": "wann fährt der Zug von Horgen nach Zürich",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "bdb60979-7bb1-424b-8b89-3a9b787bb0ef",
+    "data": [
+      {
+        "text": "Flughafen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " bitte",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "64808185-9194-4bdf-936e-c439bd2e9831",
+    "data": [
+      {
+        "text": "was fährt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Leimbach",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Luzern",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6c13f7db-e7ae-43b3-a5d3-e8359f8bbd4d",
+    "data": [
+      {
+        "text": "hohenklingensteig",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "aa3d7816-3e3f-40e5-aa75-30dd84523bda",
+    "data": [
+      {
+        "text": "hohenklingensteig",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "9236aa98-5cf8-4301-a8a4-903caa1970ab",
+    "data": [
+      {
+        "text": "Meilen",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3245b193-dd40-48fe-9892-3354cda81e03",
+    "data": [
+      {
+        "text": "welche ",
+        "userDefined": false
+      },
+      {
+        "text": "Züge",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Leimbach",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Rügen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " fahren",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "bc81b6f9-7a76-4920-a806-34cba87af1e5",
+    "data": [
+      {
+        "text": "wann fährt denn mein fährt der nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "Zug",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Glarus",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1067005d-adb6-40e6-8222-9b00d88d05a5",
+    "data": [
+      {
+        "text": "wann fährt die nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "Tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Kreuzplatz",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Paradeplatz",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e04fa014-d193-4035-9446-247c70e2dc18",
+    "data": [
+      {
+        "text": "Thun dufourkaserne",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "022c33f7-e91b-4f96-8d82-86fb172bb97c",
+    "data": [
+      {
+        "text": "was fährt von ",
+        "userDefined": false
+      },
+      {
+        "text": "central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "hegibachplatz",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "5 Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "00f1ec86-384d-417b-9ebc-24ca122b6c5f",
+    "data": [
+      {
+        "text": "welche ",
+        "userDefined": false
+      },
+      {
+        "text": "Züge",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " fahren ab ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "db2ed0f4-f8f2-49ad-81db-15877bdc89a2",
+    "data": [
+      {
+        "text": "was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Hegibachplatz",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "funft minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8d4fdf48-3831-4fbe-9c9a-9647c162f581",
+    "data": [
+      {
+        "text": "was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Hegibachplatz",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "funft minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c85724f1-050d-40d3-b44d-1cb837cc97a3",
+    "data": [
+      {
+        "text": "abfahrt ",
+        "userDefined": false
+      },
+      {
+        "text": "ab Arth-Goldau",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b460df67-f1a7-45e4-8374-2e6490d82348",
+    "data": [
+      {
+        "text": "Russikon",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e11b187a-33c6-46f2-936a-7514ade5f3d4",
+    "data": [
+      {
+        "text": "bern",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8b15a691-ed8b-4f3b-8bae-28c9488e6568",
+    "data": [
+      {
+        "text": "Amriswil",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c8b87bf8-f447-4fb3-b88a-5bf44addbdf7",
+    "data": [
+      {
+        "text": "Bahnhof ",
+        "userDefined": false
+      },
+      {
+        "text": "Uzwil",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a212a6a1-90d0-4b45-8a59-c871aaf91990",
+    "data": [
+      {
+        "text": "Marienfried",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7b47012d-6e1a-478d-b86f-3aa9f0ef7f88",
+    "data": [
+      {
+        "text": "Fernsehstudio",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7d0be224-6bcd-4059-a89f-83ca028f5681",
+    "data": [
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "412c8cb5-99ea-4c48-a74e-f71c336b5506",
+    "data": [
+      {
+        "text": "Zug",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e929b65d-a6e5-4f9d-af05-499627316d4d",
+    "data": [
+      {
+        "text": "Solothurn",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "28184acf-a461-46ff-bc9d-8532bdde28c1",
+    "data": [
+      {
+        "text": "Meilen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6e3a5312-0062-49d7-bd4b-c2b738d77baf",
+    "data": [
+      {
+        "text": "Neftenbach herrgass",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6999b7d2-0ecb-41e9-ace8-b8466e0a900a",
+    "data": [
+      {
+        "text": "Kriens Mattenhof",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b9b82143-df23-4cc2-87fc-b6262cb4f8f4",
+    "data": [
+      {
+        "text": "enikerweg",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "84e6d328-feba-4c50-93fa-23ad48ae2709",
+    "data": [
+      {
+        "text": "was heißt in ",
+        "userDefined": false
+      },
+      {
+        "text": "5 Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " vom von ",
+        "userDefined": false
+      },
+      {
+        "text": "fellenbergstrasse",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " ab",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d793dd3e-ec90-4d12-b131-583515d7b77a",
+    "data": [
+      {
+        "text": "was fällt in ",
+        "userDefined": false
+      },
+      {
+        "text": "5 Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich fellenbergstrasse",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " auf",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ed34d7f3-39d2-44f9-9176-860e410d5813",
+    "data": [
+      {
+        "text": "frage Schweizer öv",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " was fährt in ",
+        "userDefined": false
+      },
+      {
+        "text": "fünf Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich fellenbergstrasse",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a35d6971-5c0c-4bb4-950c-aab6b6f28bb9",
+    "data": [
+      {
+        "text": "von ",
+        "userDefined": false
+      },
+      {
+        "text": "Roggwil",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Wallisellen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "29634566-82e9-4d3d-8734-1b9d892b6dc6",
+    "data": [
+      {
+        "text": "Pfeffingen Bellevue",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "532e1743-1bd0-4ca5-8f3a-644cf2b4988e",
+    "data": [
+      {
+        "text": "und was sind die nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "zwei",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Bussen",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Letzipark",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "0be6b7df-5cbb-4ac4-ab93-a3b6e0d8c0a8",
+    "data": [
+      {
+        "text": "Düdingen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "4290ebe6-5448-4f3d-bf91-94a5f21a5a6e",
+    "data": [
+      {
+        "text": "Was fahrt nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "3fe084ba-8ab9-45c4-a569-08df5ffd0864",
+    "data": [
+      {
+        "text": "Zürich",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Davos",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "9a546f3f-a208-4003-b2a7-da883c2c6b6c",
+    "data": [
+      {
+        "text": "Zoo",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "87712c2f-37a4-4be1-b19c-0a21a6ccaf63",
+    "data": [
+      {
+        "text": "Was geht nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "362069d8-9c12-4061-92f5-888dbc8aecaa",
+    "data": [
+      {
+        "text": "wann fährt die ",
+        "userDefined": false
+      },
+      {
+        "text": "S3",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Recke",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Wetzikon",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "acf9bba9-5e8f-44c2-8aae-2e63e6753b36",
+    "data": [
+      {
+        "text": "wann fährt ein ",
+        "userDefined": false
+      },
+      {
+        "text": "Zug",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "6aa3e16e-37c7-4dbe-84a2-9196c2ed905f",
+    "data": [
+      {
+        "text": "Düdingen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "57e42467-6288-473f-acf4-bab4dabef0d3",
+    "data": [
+      {
+        "text": "wann fährt der nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "Bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Oberwil Lieli Oberwil",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " Post nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Sihlcity",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "61a07348-58f8-45bd-8b69-1dec0a8f21dd",
+    "data": [
+      {
+        "text": "von ",
+        "userDefined": false
+      },
+      {
+        "text": "Pfeffingen Post",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "20c9c22f-9d82-4c3b-805a-f004fb63139a",
+    "data": [
+      {
+        "text": "wann sind die nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "Busse",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Letzipark",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "457516b1-1227-4aa1-a4e1-c2a17c63d28d",
+    "data": [
+      {
+        "text": "Trübbach",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "3d96610d-f822-425a-ab6c-f3973466eab0",
+    "data": [
+      {
+        "text": "was sind die nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "zwei",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Busse",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Letzipark",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "b155caf9-11c2-45c6-ad70-270b8d460084",
+    "data": [
+      {
+        "text": "Was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "0321cd40-676b-48af-a39d-aa2448731524",
+    "data": [
+      {
+        "text": "Was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "8e7e73d4-ab2b-42f1-8c0c-33b3753f0546",
+    "data": [
+      {
+        "text": "Zug",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "7dc968cf-d5d6-4c88-b52d-83f9a209d5da",
+    "data": [
+      {
+        "text": "Zürich HB",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "9a41d133-81a8-44d4-949c-4a83ef1126fa",
+    "data": [
+      {
+        "text": "Was fährt in ",
+        "userDefined": false
+      },
+      {
+        "text": "fünf Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " vom ",
+        "userDefined": false
+      },
+      {
+        "text": "Hegibachplatz",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " ab?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "9258aca3-1d91-4e6c-96df-3a1e027bfa4f",
+    "data": [
+      {
+        "text": "was fährt in ",
+        "userDefined": false
+      },
+      {
+        "text": "fünf Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " von vom ",
+        "userDefined": false
+      },
+      {
+        "text": "hegibachplatz",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " ab",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "813e571a-7c3f-419c-adc7-400386a8f40d",
+    "data": [
+      {
+        "text": "Was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "9a775eab-7e72-4145-b87a-ca694f8900ea",
+    "data": [
+      {
+        "text": "Was fahrt nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "df87c508-29eb-4c7d-aa6d-75c122c2fd37",
+    "data": [
+      {
+        "text": "wann fährt der nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "Zug",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Aesch",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "24d21d47-e006-4469-bcac-334a5fd7328d",
+    "data": [
+      {
+        "text": "Was geht nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB?",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "02c87f8d-a7ee-404c-aabf-7553ccd5c421",
+    "data": [
+      {
+        "text": "Welcher ",
+        "userDefined": false
+      },
+      {
+        "text": "Bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " geht von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " zu ",
+        "userDefined": false
+      },
+      {
+        "text": "Helmhaus",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "c96bb604-b230-4a31-b575-1dc5a0e34e38",
+    "data": [
+      {
+        "text": "Zürich",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Davos",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "bb6e5d7c-30d6-4b2e-b13e-85ce2111b1b3",
+    "data": [
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "0b109f35-670a-4f97-b600-2ca86436f49b",
+    "data": [
+      {
+        "text": "Bülach",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "983da37f-3159-4361-adda-364d07c3f95b",
+    "data": [
+      {
+        "text": "Neftenbach Alte Post",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "c6dc55a9-fe2c-4a47-be21-2b3746e852bb",
+    "data": [
+      {
+        "text": "Zoo",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "2821ddb7-23f0-49fe-a647-36ea259c1f63",
+    "data": [
+      {
+        "text": "Stammheim",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "3dc3407d-aca7-451d-ac6a-2835b361d768",
+    "data": [
+      {
+        "text": "Gießhübel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich Hauptbahnhof",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "bf892c95-e31a-4e54-90fa-6ea99ce98243",
+    "data": [
+      {
+        "text": "Chur",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "b4ea3b40-f7ba-42dd-a9a7-cd24346603bf",
+    "data": [
+      {
+        "text": "nächste Abfahrt ",
+        "userDefined": false
+      },
+      {
+        "text": "Bellevue",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "88aedd16-96a4-4d06-aeee-76344842e3b3",
+    "data": [
+      {
+        "text": "Sihlpost",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "962ec53a-3295-4e58-a994-824dc0c8d775",
+    "data": [
+      {
+        "text": "Sihlpost",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "f963bdbb-3ef8-4818-b441-4bd7f1403227",
+    "data": [
+      {
+        "text": "Züge",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich Hauptbahnhof",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " bis ",
+        "userDefined": false
+      },
+      {
+        "text": "Gießhübel",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "9da619e8-1b23-44d9-926c-08c4bcf2cf0b",
+    "data": [
+      {
+        "text": "Was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "ebfa1157-504d-4da8-9941-98ddd467486f",
+    "data": [
+      {
+        "text": "Was fahrt von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "af0f2a65-4e10-40d5-8706-a38dbc0a4368",
+    "data": [
+      {
+        "text": "Was fahrt nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "50b47b55-e247-47e3-8635-5823821d902e",
+    "data": [
+      {
+        "text": "Was sind die nächster ",
+        "userDefined": false
+      },
+      {
+        "text": "Trams",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "in funf Minuten",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "01532aae-05da-493a-9a43-ceea638d0ffc",
+    "data": [
+      {
+        "text": "wann fährt die ",
+        "userDefined": false
+      },
+      {
+        "text": "S3",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " bei ",
+        "userDefined": false
+      },
+      {
+        "text": "Mellingen Heitersberg",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "4f12b813-20b3-4959-aabe-6376e89ab1bb",
+    "data": [
+      {
+        "text": "Was fahren von ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " ab?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "5a4369f6-ea13-4421-a503-7487d6730a45",
+    "data": [
+      {
+        "text": "wann fährt die ",
+        "userDefined": false
+      },
+      {
+        "text": "S3",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " Richtung ",
+        "userDefined": false
+      },
+      {
+        "text": "Wetzikon",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " ab ",
+        "userDefined": false
+      },
+      {
+        "text": "Mellingen Heitersberg",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "c9ecb85b-fd97-457d-b0b6-2427785dec3d",
+    "data": [
+      {
+        "text": "wann fährt ein ",
+        "userDefined": false
+      },
+      {
+        "text": "Zug",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "baden",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "3bd54a54-bd2b-47aa-9baf-bd37a074891c",
+    "data": [
+      {
+        "text": "Was geht nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "75012e3f-7d29-4c1a-94e5-f2e028710032",
+    "data": [
+      {
+        "text": "Was fahrt ab von ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "774d30b8-1917-4501-a8f9-5276ed85749a",
+    "data": [
+      {
+        "text": "Was fahrt nächste von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "0b879b2d-3aff-4d7b-bbe7-f5bf510ae0f1",
+    "data": [
+      {
+        "text": "Wie komme ich von ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " bei ",
+        "userDefined": false
+      },
+      {
+        "text": "Tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  },
+  {
+    "id": "d1073a95-8d85-43fb-91f1-e4a1f2033d10",
+    "data": [
+      {
+        "text": "Welcher ",
+        "userDefined": false
+      },
+      {
+        "text": "Trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " abfahren von ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518361106
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9f8c261e-b366-4e3d-90a4-cfb46b0bbf99",
+    "data": [
+      {
+        "text": "How do I get from here to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518348967
+  }
+]

@@ -1,0 +1,257 @@
+[
+  {
+    "id": "8163e6f1-af12-4ae1-a09c-678136d138f9",
+    "data": [
+      {
+        "text": "What stations are near ",
+        "userDefined": false
+      },
+      {
+        "text": "me",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "15aaa550-1e6c-45e5-8ce1-d9cb1dd0abd2",
+    "data": [
+      {
+        "text": "What stations are nearby?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b42bf5cf-ef05-49d9-aeb7-8004c7349d19",
+    "data": [
+      {
+        "text": "what stations are nearby",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7acbf96d-6562-40f6-a841-16f7a6d9cec0",
+    "data": [
+      {
+        "text": "nearby stations",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7f1bc88b-ff8a-4207-a7c9-b263fc9614da",
+    "data": [
+      {
+        "text": "What stations are near me?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "391fe1e6-3eb6-4a15-b4b9-e8249a79b00e",
+    "data": [
+      {
+        "text": "What stations are near ",
+        "userDefined": false
+      },
+      {
+        "text": "Brandschenkestrasse 110, Zurich",
+        "alias": "query",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": " ?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1514474557
+  },
+  {
+    "id": "38c3d4b1-0acc-46db-869e-fcc7b018fe00",
+    "data": [
+      {
+        "text": "What stations are nera me",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "0b60ad9e-668b-4927-ba9c-629cf4b97814",
+    "data": [
+      {
+        "text": "What stations are nearby?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "02941f74-7387-418e-b7ad-64aebe102d76",
+    "data": [
+      {
+        "text": "stations near me.",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "88855049-66aa-4552-b3d4-0ba06a1e8764",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for stations near Bahnhofstrasse/HB",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6a249889-015a-445c-af98-d09062ef35f8",
+    "data": [
+      {
+        "text": "what stations are nearby",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "de07998b-ac17-4097-88e3-08772a545805",
+    "data": [
+      {
+        "text": "What are the closest ",
+        "userDefined": false
+      },
+      {
+        "text": "two",
+        "alias": "limit",
+        "meta": "@sys.number",
+        "userDefined": false
+      },
+      {
+        "text": " stations?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a5450305-cff9-4169-acba-1884208a6dba",
+    "data": [
+      {
+        "text": "What are the ",
+        "userDefined": false
+      },
+      {
+        "text": "two",
+        "alias": "limit",
+        "meta": "@sys.number",
+        "userDefined": false
+      },
+      {
+        "text": " stations closest to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "query",
+        "meta": "@sys.any",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "960f6d29-4b1b-48ec-b7bb-3abef91e470a",
+    "data": [
+      {
+        "text": "What stations are near ",
+        "userDefined": false
+      },
+      {
+        "text": "8001 Zurich",
+        "alias": "query",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1514474557
+  },
+  {
+    "id": "9a4411de-26e9-4f1e-8e8f-070397310cee",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for stations near ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse/HB",
+        "alias": "query",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6b9be679-1eca-425e-b47f-9c9f4a2d720d",
+    "data": [
+      {
+        "text": "nearby stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

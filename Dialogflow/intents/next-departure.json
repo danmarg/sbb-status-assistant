@@ -1,0 +1,93 @@
+{
+  "id": "58d1a53c-24e5-456a-baaf-0034bc9fe87f",
+  "name": "next-departure",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "c49706cb-141c-4f08-a02b-423b717dda31",
+          "required": false,
+          "dataType": "@transport",
+          "name": "transport",
+          "value": "$transport",
+          "prompts": [],
+          "defaultValue": "any",
+          "isList": true
+        },
+        {
+          "id": "69be8289-684e-4c35-a77e-c72b29bc41cc",
+          "required": false,
+          "dataType": "@sys.date-time",
+          "name": "date-time",
+          "value": "$date-time",
+          "isList": false
+        },
+        {
+          "id": "e562834f-cce9-42fe-b7fd-3d04d6c23ce2",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "limit",
+          "value": "$limit",
+          "prompts": [],
+          "defaultValue": "1",
+          "isList": false
+        },
+        {
+          "id": "c8b1fa67-f20a-4618-aa87-4253818a06a3",
+          "required": true,
+          "dataType": "@sbb_stops",
+          "name": "source",
+          "value": "$source",
+          "prompts": [
+            {
+              "lang": "de",
+              "value": "Ich kann die Haltestelle nicht verstanden. Ab welcher Haltestelle?"
+            },
+            {
+              "lang": "en",
+              "value": "I could not understand the stop. From which station are you departing?"
+            }
+          ],
+          "isList": false
+        },
+        {
+          "id": "26a6fbf9-54ea-4679-8f79-6e650578cb41",
+          "required": false,
+          "dataType": "@zvv_routes",
+          "name": "route",
+          "value": "$route",
+          "isList": true
+        },
+        {
+          "id": "9159f105-d7bc-438b-946d-c582b0cc6af5",
+          "required": false,
+          "dataType": "@sbb_stops",
+          "name": "destination",
+          "value": "$destination",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "google": false
+      },
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518510597,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,61 @@
+{
+  "description": "SBB public transit status",
+  "language": "en",
+  "disableInteractionLogs": false,
+  "googleAssistant": {
+    "googleAssistantCompatible": true,
+    "project": "sbb-status-4f4eb",
+    "welcomeIntentSignInRequired": false,
+    "startIntents": [
+      {
+        "intentId": "58d1a53c-24e5-456a-baaf-0034bc9fe87f",
+        "signInRequired": false
+      },
+      {
+        "intentId": "b5b0ca12-979f-49b0-ab43-a0e4d0b904e7",
+        "signInRequired": false
+      },
+      {
+        "intentId": "6db8afab-1512-4cba-9c54-4762a6b68175",
+        "signInRequired": false
+      },
+      {
+        "intentId": "a7b7e6af-5c90-4bc1-9a37-543948eb2913",
+        "signInRequired": false
+      }
+    ],
+    "systemIntents": [],
+    "endIntentIds": [
+      "58d1a53c-24e5-456a-baaf-0034bc9fe87f",
+      "b5b0ca12-979f-49b0-ab43-a0e4d0b904e7",
+      "29d0c2cc-59cb-4301-8f33-0a5cea7830ca",
+      "1d2ef5ca-9d15-4306-8834-3c3607bda018"
+    ],
+    "oAuthLinking": {
+      "required": false,
+      "grantType": "AUTH_CODE_GRANT"
+    },
+    "voiceType": "MALE_1",
+    "capabilities": [],
+    "protocolVersion": "V2",
+    "autoPreviewEnabled": true
+  },
+  "defaultTimezone": "Europe/Madrid",
+  "webhook": {
+    "url": "https://sbb-status-4f4eb.appspot.com/dialogflow",
+    "headers": {
+      "": ""
+    },
+    "available": true,
+    "useForDomains": false,
+    "cloudFunctionsEnabled": false,
+    "cloudFunctionsInitialized": false
+  },
+  "isPrivate": true,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
+  "supportedLanguages": [
+    "de"
+  ],
+  "enableOnePlatformApi": false
+}

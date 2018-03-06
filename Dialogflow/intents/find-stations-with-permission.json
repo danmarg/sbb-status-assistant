@@ -1,0 +1,35 @@
+{
+  "id": "29d0c2cc-59cb-4301-8f33-0a5cea7830ca",
+  "name": "find-stations-with-permission",
+  "auto": true,
+  "contexts": [
+    "find_stations"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "find-stations-with-permission",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518353061,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "actions_intent_PERMISSION"
+    }
+  ]
+}

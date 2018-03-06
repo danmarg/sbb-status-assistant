@@ -1,0 +1,36 @@
+[
+  {
+    "value": "tram",
+    "synonyms": [
+      "tram",
+      "trams"
+    ]
+  },
+  {
+    "value": "any",
+    "synonyms": [
+      "any"
+    ]
+  },
+  {
+    "value": "bus",
+    "synonyms": [
+      "bus",
+      "busses"
+    ]
+  },
+  {
+    "value": "boat",
+    "synonyms": [
+      "boat",
+      "boats"
+    ]
+  },
+  {
+    "value": "train",
+    "synonyms": [
+      "train",
+      "trains"
+    ]
+  }
+]

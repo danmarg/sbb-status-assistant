@@ -1,0 +1,45 @@
+{
+  "id": "a7b7e6af-5c90-4bc1-9a37-543948eb2913",
+  "name": "from-here-to",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "from-here-to",
+      "affectedContexts": [
+        {
+          "name": "from_here",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "9e67bedc-e638-4fd6-80da-a849ba3c28f9",
+          "required": true,
+          "dataType": "@sbb_stops",
+          "name": "destination",
+          "value": "$destination",
+          "prompts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518355411,
+  "fallbackIntent": false,
+  "events": []
+}

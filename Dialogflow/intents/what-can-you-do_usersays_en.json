@@ -1,0 +1,117 @@
+[
+  {
+    "id": "a4e527c6-6ee3-4f06-b71c-fa5f9f460f85",
+    "data": [
+      {
+        "text": "what can you do?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "44636b57-7266-416d-a49f-fcb169e413fe",
+    "data": [
+      {
+        "text": "What can you do?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "13c6a197-6cb7-49f4-9c09-56fea9aa6d89",
+    "data": [
+      {
+        "text": "Hi",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "86845184-7726-4875-bfd9-7c8997bd22f3",
+    "data": [
+      {
+        "text": "help",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "33db745e-58c8-4eb3-8c10-f924a8a4472d",
+    "data": [
+      {
+        "text": "information",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d52eee7f-61a5-4449-bdee-4040dadbe5bc",
+    "data": [
+      {
+        "text": "Hello",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "ed5f5ad9-ff65-4646-8257-5679c9199402",
+    "data": [
+      {
+        "text": "Help",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "d374c306-a3a9-4e3a-bed4-37a33455a89f",
+    "data": [
+      {
+        "text": "What can you recognize?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "125c16c2-bff5-45e0-8aa0-ad5390ff8bd3",
+    "data": [
+      {
+        "text": "Example queries",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a1224bb9-607f-4114-8ae5-081de261fa02",
+    "data": [
+      {
+        "text": "what can you do",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

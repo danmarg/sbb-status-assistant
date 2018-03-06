@@ -1,0 +1,1409 @@
+[
+  {
+    "id": "cc93053f-d67e-4cde-a897-322d86cc08cc",
+    "data": [
+      {
+        "text": "next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b3d37369-0718-486b-9332-b5422578ae22",
+    "data": [
+      {
+        "text": "ask Swiss Transit for the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ecba1e96-d895-4823-aa8f-0f4df67f6242",
+    "data": [
+      {
+        "text": "ask Swiss Transit for the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "11b71459-cae3-4f96-b586-9e8d987f57ca",
+    "data": [
+      {
+        "text": "What are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "218b62b7-f0a2-4864-aee6-6e026dbc650d",
+    "data": [
+      {
+        "text": "Geneva",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c69da5f3-702f-43f1-a79c-cec3716edddd",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "7",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "16a81969-ac24-45e2-8b5f-bd0ccc14efd1",
+    "data": [
+      {
+        "text": "What are the next departures from Bahnhofstrasse/HB?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3360543e-40f7-40f9-a09b-b14e05253607",
+    "data": [
+      {
+        "text": "Geneva",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4cbebce3-4ee1-4c64-ab44-638f51ea1aea",
+    "data": [
+      {
+        "text": "What are the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse/HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "33dd851f-8253-43a2-8b76-c1e214a72f7f",
+    "data": [
+      {
+        "text": "what the next ",
+        "userDefined": false
+      },
+      {
+        "text": "3",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " departures in ",
+        "userDefined": false
+      },
+      {
+        "text": "5 minutes from",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich flughafen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a28d782c-bda6-4daa-81dc-a55555889f0d",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " are leaving from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhof Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "3c3d3c60-c1a5-420e-9ad7-70603461f204",
+    "data": [
+      {
+        "text": "what ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " are leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "0f449651-bbe3-44b4-9ed5-90360ba62594",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " at ",
+        "userDefined": false
+      },
+      {
+        "text": "17:00",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      },
+      {
+        "text": ".",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "65f112b0-0f08-4519-8496-e6074fb466e1",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " at ",
+        "userDefined": false
+      },
+      {
+        "text": "17:00",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      },
+      {
+        "text": ".",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6185f0d2-4506-437d-9d45-87d371c4ab6f",
+    "data": [
+      {
+        "text": "Basel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ca9c29b7-592a-4f2e-9f4c-3aaadc5da8b2",
+    "data": [
+      {
+        "text": "for the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a15d57b7-ce5f-4980-96b7-48c0a010626e",
+    "data": [
+      {
+        "text": "What are the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich Hauptbahnhof",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "eadae7e9-8975-4df0-a6a9-a84f75f66b15",
+    "data": [
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " at ",
+        "userDefined": false
+      },
+      {
+        "text": "17:00",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "41ed712f-4811-4d27-b994-10b079552e96",
+    "data": [
+      {
+        "text": "Trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": ".",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7fff3c36-ccf8-4180-93e0-0a929e051662",
+    "data": [
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3905f565-dc62-46d0-8974-e6a6adb7975a",
+    "data": [
+      {
+        "text": "What are the upcoming ",
+        "userDefined": false
+      },
+      {
+        "text": "7",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "bbd9bd71-660d-4d16-89af-2369e648c209",
+    "data": [
+      {
+        "text": "what ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " are departing from ",
+        "userDefined": false
+      },
+      {
+        "text": "Geneva",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b85f1023-0d05-4ef4-b8a1-6041430e8667",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "in 15 minutes",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "312503c5-f097-4966-bc07-cc36e58a02fe",
+    "data": [
+      {
+        "text": "How do I go from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to Pfaffikon SZ?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "45cf5ea6-fc67-4012-a576-003d6f64adf7",
+    "data": [
+      {
+        "text": "What are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "three",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "S4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "CEntral",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "32e28f69-5abb-4de9-85a9-f4cc00436d77",
+    "data": [
+      {
+        "text": "What are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "6",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " or ",
+        "userDefined": false
+      },
+      {
+        "text": "7",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1
+  },
+  {
+    "id": "f784dcd1-5c38-4e95-874d-c1d856328c54",
+    "data": [
+      {
+        "text": "What are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "five",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "S4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "fa5da96a-042e-497b-adf0-aecdca0db2db",
+    "data": [
+      {
+        "text": "How do I go from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Pfaffikon SZ",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ab5eb229-e72a-4e79-82db-0f5a0ace676d",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": ".",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e62a26b2-30a1-41c7-b631-239864c77d85",
+    "data": [
+      {
+        "text": "for the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Enge",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5290c408-0957-4ce6-b812-df87c958c8eb",
+    "data": [
+      {
+        "text": "for the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Enge",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "24f1ab5d-f3f6-4b13-80de-14f69008062c",
+    "data": [
+      {
+        "text": "what the next two departures leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich flughafen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " for ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich hb",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b78fe0be-0c32-4007-829f-4c811e074af1",
+    "data": [
+      {
+        "text": "how to get from ",
+        "userDefined": false
+      },
+      {
+        "text": "Stadelhofen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to the ",
+        "userDefined": false
+      },
+      {
+        "text": "Zoo",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "06f3d819-265c-4b0c-8bbe-30d271202087",
+    "data": [
+      {
+        "text": "what the next to departures leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich flughafen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " for Zurich hbr",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "41469377-bfe1-40dc-af05-9c14e431c0ec",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " are leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "0615245f-2484-42e8-84ee-23eaa0f7f1de",
+    "data": [
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "15 minutes",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4d0c9e68-cf34-40d8-b443-b27434becb6d",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "c6f8bb68-767e-4e38-8e39-29aa3877c3c2",
+    "data": [
+      {
+        "text": "How do I go from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Pfaffikon SZ",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "195e62ac-d03a-4fd0-a8c0-27e2059effe9",
+    "data": [
+      {
+        "text": "What are the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zuerich Bahnhofstrasse/HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "2b851421-6b6b-40c0-993a-a8405338c641",
+    "data": [
+      {
+        "text": "next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "flughafen",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a6e1056c-8d04-4722-8f03-38431feab5cd",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " are leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "in three minutes",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a471cb53-42ae-4976-b268-1f6e82203164",
+    "data": [
+      {
+        "text": "What are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " or ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " leaving from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhof Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "b12b281c-1450-4bc9-8ef8-87a576e4a724",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": ".",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "553ee56c-2c32-43f0-848a-a5ae7321dc18",
+    "data": [
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "15 minutes",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e0983629-6865-4816-ba88-96ad2f31b80c",
+    "data": [
+      {
+        "text": "What are the next departures from Zuerich Bahnhofstrasse/HB",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8ae88d4a-ffe9-432c-b2f4-4f334a656878",
+    "data": [
+      {
+        "text": "next ",
+        "userDefined": false
+      },
+      {
+        "text": "trains",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

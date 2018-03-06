@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ab10aa99-c443-4646-b4df-4fd38995680e",
+    "data": [
+      {
+        "text": "Hallo",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "d2c3b04f-64f2-44f3-8389-836706544c5f",
+    "data": [
+      {
+        "text": "Guten Tag",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "4ad4d284-7288-4c5a-a10d-b68892ba207d",
+    "data": [
+      {
+        "text": "Hi",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "97eb9f8f-d9b9-468b-a0da-22183b91101f",
+    "data": [
+      {
+        "text": "Hilf mir",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "c3368c9d-f53f-496b-bdfe-2f75ba6ecd89",
+    "data": [
+      {
+        "text": "Wass kann sie machen?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

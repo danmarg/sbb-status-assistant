@@ -1,0 +1,38 @@
+{
+  "id": "ce3942b2-3523-4c88-a0dd-30ac659cb6de",
+  "name": "welcome",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "GOOGLE_ASSISTANT_WELCOME",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "What departures or stops can I help you look up?"
+        },
+        {
+          "type": 0,
+          "lang": "de",
+          "speech": "Welche Abfahrten oder Haltestellen kann ich für Ihnen aufsuchen?"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1515940540,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "GOOGLE_ASSISTANT_WELCOME"
+    }
+  ]
+}

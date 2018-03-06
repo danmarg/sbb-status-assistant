@@ -1,0 +1,49 @@
+[
+  {
+    "value": "bus",
+    "synonyms": [
+      "bus",
+      "busses",
+      "Busse"
+    ]
+  },
+  {
+    "value": "boat",
+    "synonyms": [
+      "boat",
+      "boats",
+      "Boot,",
+      "Boote",
+      "Schiff",
+      "Schiffe"
+    ]
+  },
+  {
+    "value": "train",
+    "synonyms": [
+      "train",
+      "trains",
+      "Zug",
+      "Bahn",
+      "Züge",
+      "Bahnen",
+      "SBahn"
+    ]
+  },
+  {
+    "value": "tram",
+    "synonyms": [
+      "tram",
+      "trams",
+      "Straßenbahn",
+      "Straßenbahnen"
+    ]
+  },
+  {
+    "value": "any",
+    "synonyms": [
+      "any",
+      "jeder"
+    ]
+  }
+]

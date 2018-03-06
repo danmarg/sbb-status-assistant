@@ -1,0 +1,190 @@
+[
+  {
+    "id": "e5de24e8-ebd2-43b6-ba3b-90693b579526",
+    "data": [
+      {
+        "text": "wie ich komme nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d3e5371b-ffd9-4c67-88a3-4c357ff5d3bd",
+    "data": [
+      {
+        "text": "wie komme ich nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Luzern",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d8e9a382-6001-460d-a0ca-f28e2034ab70",
+    "data": [
+      {
+        "text": "wie komme ich nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich enge",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "cb5349c9-61ce-43ad-9130-3e3c87c4231f",
+    "data": [
+      {
+        "text": "wie ich komme nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e4f62b80-f58f-4737-862f-a599739c57c7",
+    "data": [
+      {
+        "text": "wie komme ich nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich Hauptbahnhof",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d78732d9-891b-487b-88a2-e13cdde21358",
+    "data": [
+      {
+        "text": "wie komme ich nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Basel",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "cce8d72b-0775-4976-9f68-43dea2cfaf17",
+    "data": [
+      {
+        "text": "welche Züge fahren nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Dietikon",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f507ee63-19eb-4104-b49d-aaa685976b0d",
+    "data": [
+      {
+        "text": "Verbindungen nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "327fccc7-3614-4156-973b-78304d000080",
+    "data": [
+      {
+        "text": "Wie komme ich von hier nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518355411
+  },
+  {
+    "id": "2fd0469c-1fca-449a-ad8e-04e38d6bfaf1",
+    "data": [
+      {
+        "text": "Wie komme ich nach ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1518355411
+  }
+]

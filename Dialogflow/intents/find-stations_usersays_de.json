@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1118bd6e-eed8-413c-b0c1-877569736fbd",
+    "data": [
+      {
+        "text": "Was sind die nächste Stationen von ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich Enge",
+        "alias": "query",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "4f0f9f3e-25c8-4aef-841f-a7f47ad0ea61",
+    "data": [
+      {
+        "text": "wo ist meine nächste Haltestelle",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c12875fc-5a2f-4683-9e32-05aa171f211b",
+    "data": [
+      {
+        "text": "Was sind die nächste ",
+        "userDefined": false
+      },
+      {
+        "text": "zwei",
+        "alias": "limit",
+        "meta": "@sys.number",
+        "userDefined": false
+      },
+      {
+        "text": " Haltestelle?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "93264e3f-212f-4c91-be95-01c1a448527d",
+    "data": [
+      {
+        "text": "Was ist die nächste stationen?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

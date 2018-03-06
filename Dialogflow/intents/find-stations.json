@@ -1,0 +1,52 @@
+{
+  "id": "6db8afab-1512-4cba-9c54-4762a6b68175",
+  "name": "find-stations",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "find-stations",
+      "affectedContexts": [
+        {
+          "name": "find_stations",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "235031bf-80ac-46cd-8f01-a529bf1fcad0",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "query",
+          "value": "$query",
+          "isList": false
+        },
+        {
+          "id": "651ecdde-ea2c-4a46-a499-6619b4f9bada",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "limit",
+          "value": "$limit",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Looking up stations..."
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518352137,
+  "fallbackIntent": false,
+  "events": []
+}

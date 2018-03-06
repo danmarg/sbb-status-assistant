@@ -1,0 +1,34 @@
+{
+  "id": "2b6c80aa-eca8-4fad-8bb9-2dbbe031c411",
+  "name": "what-can-you-do",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Ask me about stations, departures, or routes. For example, \"What\u0027s the next departure from Zürich HB?\" Or, \"What trams are leaving from Central to Helmhaus in ten minutes?\" Or, ask about a specific route, like, \"When\u0027s the next S4 leave Zurich HB?\""
+        },
+        {
+          "type": 0,
+          "lang": "de",
+          "speech": "Fragen Sie mich nach Bahnhöfen, Abfahrten oder Routen. Zum Beispiel \"Was ist die nächste Abfahrt von Zürich HB?\" Oder: \"Welche Trams fahren in zehn Minuten von Central zum Helmhaus?\" Oder fragen Sie nach einer bestimmten Route, zB \"Wann geht die nächste S4 Zürich HB?\""
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1514913708,
+  "fallbackIntent": false,
+  "events": []
+}

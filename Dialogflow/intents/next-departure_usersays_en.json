@@ -1,0 +1,1103 @@
+[
+  {
+    "id": "ca6c0290-d2f9-42c0-9252-ce33ab2995a0",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f2c548ab-06d0-4757-a5eb-7fcba50165e6",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "86c261d6-e1b4-4f19-bf13-faa480b476ee",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "56f615c3-e11f-4cc9-88f9-1b8782b0c89c",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "S4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a3a86e92-140e-4df5-bc2e-96c3f9428cbc",
+    "data": [
+      {
+        "text": "next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "03be5a7f-6ef3-4901-bd4f-bb9c0b788e4c",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3b66f7f3-6f62-473a-b591-5b14e9dfbe7f",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6f1e84ec-7e2c-4b53-9744-7d4dad04b0f3",
+    "data": [
+      {
+        "text": "What\u0027s the next departure from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1,
+    "updated": 1514258772
+  },
+  {
+    "id": "1396f201-0194-45e8-824d-06830cb9fb6c",
+    "data": [
+      {
+        "text": "When are the next ",
+        "userDefined": false
+      },
+      {
+        "text": "trams",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "539edfa4-d365-4d01-ad1a-cf0435fd74d1",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for the next departures from Bahnhofstrasse/HB",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "73355663-ffa8-4da5-acec-097de35f171d",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "one",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " departure from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "9c97e7fc-8799-468e-bdcc-af01bdf7513d",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse/HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6bfc44fa-0d71-44bc-9c25-c29ec02ea1e3",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "dc7cc591-5297-43c9-a2af-359afa8e9a33",
+    "data": [
+      {
+        "text": "When is the next ",
+        "userDefined": false
+      },
+      {
+        "text": "4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "bb33df5d-b4bb-4c8c-99dc-c4e1f370a213",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "4c3a8fd4-08e0-4441-8246-a27e5cc9f269",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": true
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "9e274c7b-2b8f-4bd5-8fe9-8c157628c4b9",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1514258772
+  },
+  {
+    "id": "c9cb6d05-119b-4526-8deb-bfb4efb5b7ac",
+    "data": [
+      {
+        "text": "what\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Enge",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to the ",
+        "userDefined": false
+      },
+      {
+        "text": "airport",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e3e95edd-8eb8-412d-9650-948ac0b7816e",
+    "data": [
+      {
+        "text": "When is the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8a106064-6097-454c-96cc-20a48f92c484",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Giesshubel",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich SZU",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8d8535b5-0708-410c-b6ad-38dfb774f83b",
+    "data": [
+      {
+        "text": "When is the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Oerlikon",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c898a92f-4d10-42c9-8f56-f604a2cb366f",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " is leaving right now from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "be50529c-7239-4b95-9bcc-beda29064d8b",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "bbdb53c3-7c0b-4293-9610-94a3ba41d2de",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for the next departures from Bahnhofstrasse/HB",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "094e2931-f044-4c75-93a0-d00a254a569b",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "S4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": true
+      },
+      {
+        "text": " leaving from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zürich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a82db0f0-1776-43a8-8e38-de6a16e8737b",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " is next from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "51ac92c0-02aa-42ed-87e1-40549327f9de",
+    "data": [
+      {
+        "text": "When is the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Altstetten",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Oerlikon",
+        "alias": "destination",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "cd1f94f4-1ec7-492e-aa5a-20ac90a667e7",
+    "data": [
+      {
+        "text": "what\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "train",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Zurich HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": " to Bern",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1289a2b9-303c-4470-a734-1ad3cd7569ff",
+    "data": [
+      {
+        "text": "When is the next ",
+        "userDefined": false
+      },
+      {
+        "text": "4",
+        "alias": "route",
+        "meta": "@zvv_routes",
+        "userDefined": false
+      },
+      {
+        "text": " leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "56727d47-c65d-4b45-be8b-c81fd693a672",
+    "data": [
+      {
+        "text": "What\u0027s leaving ",
+        "userDefined": false
+      },
+      {
+        "text": "in ten minutes",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "e4e990d0-9029-4c51-90ee-dc7603380c69",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f81800a7-90e2-4c4a-a42d-cc036a513bc5",
+    "data": [
+      {
+        "text": "Ask Swiss Transit for the next departures from ",
+        "userDefined": false
+      },
+      {
+        "text": "Bahnhofstrasse/HB",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "39fe053b-be03-404a-bc1b-22a2163917ed",
+    "data": [
+      {
+        "text": "What\u0027s the next one ",
+        "userDefined": false
+      },
+      {
+        "text": "bus",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "3b41776c-d783-4d6f-baf6-ce987fba1b3a",
+    "data": [
+      {
+        "text": "What\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " from ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1514258772
+  },
+  {
+    "id": "58956228-7c1d-43ab-913e-c374b849570b",
+    "data": [
+      {
+        "text": "When\u0027s the next ",
+        "userDefined": false
+      },
+      {
+        "text": "tram",
+        "alias": "transport",
+        "meta": "@transport",
+        "userDefined": false
+      },
+      {
+        "text": " leave ",
+        "userDefined": false
+      },
+      {
+        "text": "Central",
+        "alias": "source",
+        "meta": "@sbb_stops",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

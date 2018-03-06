@@ -1,0 +1,93 @@
+{
+  "id": "b5b0ca12-979f-49b0-ab43-a0e4d0b904e7",
+  "name": "next-departures",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "70e62c78-f4a3-42de-878a-36dbd1d7a0b0",
+          "required": true,
+          "dataType": "@sbb_stops",
+          "name": "source",
+          "value": "$source",
+          "prompts": [
+            {
+              "lang": "de",
+              "value": "Ich kann die Haltestelle nicht verstanden. Ab welcher Haltestelle?"
+            },
+            {
+              "lang": "en",
+              "value": "I could not understand the stop. From which station are you departing?"
+            }
+          ],
+          "isList": false
+        },
+        {
+          "id": "abcdf6fa-4a6f-4ab4-8016-fadecf71e6fd",
+          "required": false,
+          "dataType": "@transport",
+          "name": "transport",
+          "value": "$transport",
+          "prompts": [],
+          "defaultValue": "any",
+          "isList": true
+        },
+        {
+          "id": "bd2df072-3323-4d33-82d8-6effe2b08add",
+          "required": false,
+          "dataType": "@zvv_routes",
+          "name": "route",
+          "value": "$route",
+          "isList": true
+        },
+        {
+          "id": "66e6bc81-7373-484f-883e-9a5282596492",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "limit",
+          "value": "$limit",
+          "prompts": [],
+          "defaultValue": "",
+          "isList": false
+        },
+        {
+          "id": "b671091f-e9fc-416a-9500-a49449b28440",
+          "required": false,
+          "dataType": "@sys.date-time",
+          "name": "date-time",
+          "value": "$date-time",
+          "isList": false
+        },
+        {
+          "id": "2a573f00-f95e-4549-ac47-8b951b5cbdf3",
+          "required": false,
+          "dataType": "@sbb_stops",
+          "name": "destination",
+          "value": "$destination",
+          "isList": false
+        },
+        {
+          "id": "63de8063-2c90-4100-aa36-df9577b38178",
+          "required": false,
+          "dataType": "@sys.time",
+          "name": "time",
+          "value": "$time",
+          "isList": false
+        }
+      ],
+      "messages": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518361163,
+  "fallbackIntent": false,
+  "events": []
+}

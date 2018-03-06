@@ -1,0 +1,45 @@
+{
+  "id": "1d2ef5ca-9d15-4306-8834-3c3607bda018",
+  "name": "from-here-to-with-permission",
+  "auto": true,
+  "contexts": [
+    "from_here"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "from-here-to-with-permission",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "908ff26e-4941-4854-ab1d-019968d8478c",
+          "required": false,
+          "dataType": "@sbb_stops",
+          "name": "destination",
+          "value": "#from_here.destination",
+          "prompts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1518355361,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "actions_intent_PERMISSION"
+    }
+  ]
+}
