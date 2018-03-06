@@ -81,6 +81,7 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		handleError("Error reading POST: %v", err)
 		return
 	}
+	log.Infof(appengine.NewContext(req), "RAW:\n %v", string(bs))
 	if err := json.Unmarshal(bs, &dreq); err != nil {
 		handleError("Error unmarshalling POST: %v", err)
 		return
@@ -92,7 +93,6 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Infof(appengine.NewContext(req), "Received intent %v", dreq.Result.Metadata.IntentName)
-	log.Infof(appengine.NewContext(req), "RAW:\n %v", string(bs))
 	switch dreq.Result.Metadata.IntentName {
 	case "next-departure":
 		fallthrough
