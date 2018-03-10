@@ -68,6 +68,7 @@ func TestStations(t *testing.T) {
 
 type departuresTest struct {
 	From      string
+	To        string
 	StartTime time.Time
 	Deps      []Departure
 	Want      string
@@ -76,21 +77,21 @@ type departuresTest struct {
 func TestDepatures(t *testing.T) {
 	for l, wants := range map[string][]departuresTest{
 		"en": []departuresTest{
-			{"Zurich", time.Time{}, []Departure{}, "I could not find any matching routes."},
-			{"Zurich", time.Time{}, []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}},
+			{"Zurich", "", time.Time{}, []Departure{}, "I could not find any matching routes."},
+			{"Zurich", "", time.Time{}, []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}},
 				"The next departure from Zurich is: the S7 bus departing on-time at 12:10 to Enge."},
-			{"Zurich", time.Unix(1517055015, 0), []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}},
+			{"Zurich", "", time.Unix(1517055015, 0), []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}},
 				"The next departure leaving Zurich from 12:10 is: the S7 bus departing on-time at 12:10 to Enge."},
-			{"Zurich", time.Time{}, []Departure{{"S7", 2, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}, {"S8", 0, "Zurich", "Basel", time.Unix(1517055015, 0), "train", "6"}},
+			{"Zurich", "", time.Time{}, []Departure{{"S7", 2, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}, {"S8", 0, "Zurich", "Basel", time.Unix(1517055015, 0), "train", "6"}},
 				"The next 2 departures from Zurich are: the S7 bus departing at 12:10 with a 2-minute delay to Enge, and the S8 train departing on-time from platform 6 at 12:10 to Basel."},
-			{"Zurich", time.Unix(1517055015, 0), []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}, {"S8", 0, "Zurich", "Basel", time.Unix(1517055015, 0), "train", ""}},
+			{"Zurich", "", time.Unix(1517055015, 0), []Departure{{"S7", 0, "Zurich", "Enge", time.Unix(1517055015, 0), "bus", ""}, {"S8", 0, "Zurich", "Basel", time.Unix(1517055015, 0), "train", ""}},
 				"The next 2 departures leaving Zurich from 12:10 are: the S7 bus departing on-time at 12:10 to Enge, and the S8 train departing on-time at 12:10 to Basel."},
 		},
 		"de": []departuresTest{},
 	} {
 		l := NewLocalizer(l, time.Now().Location())
 		for _, want := range wants {
-			got := l.NextDepartures(want.From, want.StartTime, want.Deps)
+			got := l.NextDepartures(want.From, want.To, want.StartTime, want.Deps)
 			if got != want.Want {
 				t.Errorf("want '%v', got '%v'", want.Want, got)
 			}
