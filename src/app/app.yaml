@@ -11,6 +11,10 @@ handlers:
     static_files: static/de-privacy.txt
     upload: static/de-privacy.txt
 
+  - url: /fr-privacy
+    static_files: static/fr-privacy.txt
+    upload: static/fr-privacy.txt
+
   - url: /.*
     secure: always
     script: _go_app
