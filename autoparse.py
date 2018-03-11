@@ -25,6 +25,8 @@ REPLACEMENTS = [
     (r',?\sHauptbahnhof', ''),
     (r'[()]', ''),
     (r'\s*\(.*\)\s*', ''),
+    (r'Basel', 'Bâle'),
+    (r'Genèv', 'Genf'),
 ]
 
 parser = argparse.ArgumentParser()
