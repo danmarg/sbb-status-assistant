@@ -247,11 +247,11 @@ func stationboard(svc transport.Transport, dreq DialogflowRequest, dresp *Dialog
 					continue
 				}
 				d := localize.Departure{
-					From:     c.From,
+					From:     l.SbbName,
 					Name:     l.Line,
 					To:       l.Exit.SbbName,
 					Mode:     mode(l.Type),
-					Platform: l.SbbName,
+					Platform: l.Track,
 				}
 				// For some reason "delay" is sometimes "X". Is this an unknown delay?
 				if l.DepDelay == "" || l.DepDelay == "X" {
