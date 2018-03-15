@@ -11,7 +11,7 @@
     "other": "Die nächste Haltestellen zu Ihnen sind: {{.Stations}}."
   },
   "could_not_find_any_routes": {
-    "other": "Ich konnte keine passenden Linien finden."
+    "other": "Ich konnte keine passenden Linien finden. Bitte versuchen Sie eine andere Abfrage."
   },
   "location_needed": {
     "other": "Ich brauche Ihren Standort."

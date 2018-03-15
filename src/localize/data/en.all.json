@@ -11,7 +11,7 @@
     "other": "The closest stations to you are: {{.Stations}}."
   },
   "could_not_find_any_routes": {
-    "other": "I could not find any matching routes."
+    "other": "I could not find any matching routes. Please try a different query."
   },
   "location_needed": {
     "other": "I need your location."

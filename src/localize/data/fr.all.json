@@ -11,7 +11,7 @@
     "other": "L'arrêt le plus proche est : {{.Stations}}."
   },
   "could_not_find_any_routes": {
-    "other": "Aucun ininéraire n'a été trouvé."
+    "other": "Aucun ininéraire n'a été trouvé. Veuillez essayer une requête différente."
   },
   "location_needed": {
     "other": "J'ai besoin de votre position."
