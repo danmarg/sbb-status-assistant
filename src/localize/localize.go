@@ -21,6 +21,7 @@ type Localizer struct {
 var matcher = language.NewMatcher([]language.Tag{
 	language.English, // The first language is used as fallback.
 	language.German,
+	language.French,
 })
 
 func init() {
