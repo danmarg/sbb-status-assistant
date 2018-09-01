@@ -1,6 +1,7 @@
 package app
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -87,8 +88,9 @@ func dialogflow(writer http.ResponseWriter, req *http.Request) {
 		return
 	}
 	dresp := DialogflowResponse{}
+	ctx, _ := context.WithTimeout(appengine.NewContext(req), 1*time.Minute)
 	svc := transport.Transport{
-		Client: urlfetch.Client(appengine.NewContext(req)),
+		Client: urlfetch.Client(ctx),
 		Logger: func(x string) { log.Infof(appengine.NewContext(req), "%s", x) },
 	}
 
